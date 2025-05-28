@@ -33,3 +33,10 @@
   background-clip: text;
   line-height: 153%;
 }
+
+.hero-sub-heading {
+  color: #908dff;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}

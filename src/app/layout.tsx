@@ -65,6 +65,7 @@ export default function RootLayout({
       >
         <Header />
         {/* <ThemeSwitcher /> */}
+       
         <div className="min-h-screen">{children}</div>
         <Footer />
       </body>

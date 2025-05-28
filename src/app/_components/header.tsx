@@ -8,20 +8,20 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-black text-white shadow-md">
+    <div className="fixed w-full text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between flex-wrap py-4">
           {/* Logo */}
           <Image
             src="/assets/blog/moon.png"
             alt="Logo"
-            width={40} 
-            height={40} 
+            width={50} 
+            height={50} 
             // className="h-10 w-10 rounded-full"
           />
-          <div className="flex items-center flex-shrink-0 text-black mr-6">
+          {/* <div className="flex items-center flex-shrink-0 text-black mr-6">
             <span className="font-semibold text-xl tracking-tight">MySite</span>
-          </div>
+          </div> */}
 
           {/* Hamburger Button */}
           <div className="block lg:hidden">
