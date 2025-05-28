@@ -8,7 +8,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed w-full text-white shadow-md">
+    <div className="fixed w-full text-white shadow-md z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between flex-wrap py-4">
           {/* Logo */}
@@ -59,17 +59,20 @@ export default function Header() {
               open ? 'block mt-4' : 'hidden lg:block'
             }`}
           >
-            <Link href="/" className="block text-gray-700 hover:text-black">
+            <Link href="/" className="block text-white hover:text-black">
               Home
             </Link>
-            <Link href="/about" className="block text-gray-700 hover:text-black">
+            {/* <Link href="/about" className="block text-white hover:text-black">
               About
-            </Link>
-            <Link href="/services" className="block text-gray-700 hover:text-black">
+            </Link> */}
+            {/* <Link href="/services" className="block text-white hover:text-black">
               Services
-            </Link>
-            <Link href="/contact" className="block text-gray-700 hover:text-black">
+            </Link> */}
+            {/* <Link href="/contact" className="block text-white hover:text-black">
               Contact
+            </Link> */}
+            <Link href="/contact" className="block text-white hover:text-black">
+              Blog
             </Link>
           </div>
         </nav>

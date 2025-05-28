@@ -59,7 +59,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
-        className={cn(inter.className, "bg-black text-slate-50"
+        className={cn(inter.className, "bg-[#0b0b0e] text-slate-50"
           //  "dark:bg-slate-900 dark:text-slate-400"
           )}
       >
