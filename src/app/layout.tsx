@@ -11,8 +11,8 @@ import Header from "./_components/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
+  title: `Nick Magidson | Frontend Engineer`,
+  description: `Welcome to my personal portfolio and blog!`,
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
@@ -26,22 +26,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="description" content="Nick Magidson | Frontend Engineer" />
+        <link rel="icon" href="/assets/blog/moon.png" type="image/png" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
+          href="/assets/blog/moon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/favicon/favicon-32x32.png"
+          href="/assets/blog/moon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/favicon/favicon-16x16.png"
+          href="/assets/blog/moon.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link
@@ -49,7 +51,7 @@ export default function RootLayout({
           href="/favicon/safari-pinned-tab.svg"
           color="#000000"
         />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="shortcut icon" href="/assets/blog/moon.png" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta
           name="msapplication-config"
