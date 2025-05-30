@@ -4,7 +4,7 @@ import { Intro } from "@/app/_components/intro";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
 import Hero from "./_components/hero-section";
-import ProjectCard from "./_components/project-card";
+import AboutSection from "./_components/about-section";
 import ProjectsSection from "./_components/projects-section";
 
 export default function Index() {
@@ -17,12 +17,8 @@ export default function Index() {
   return (
     <main>
       <Hero />
-
-      <section>
-        <Container>
-          <ProjectsSection />
-        </Container>
-      </section>
+      <AboutSection />
+      <ProjectsSection />
       
       <Container>
         {/* <Intro /> */}

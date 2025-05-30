@@ -1,4 +1,5 @@
 import ProjectCard from './project-card';
+import Container from './container';
 
 const projects = [
   {
@@ -44,10 +45,15 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <div className="flex flex-wrap justify-center gap-6">
-      {projects.map((project, index) => (
-        <ProjectCard key={index} {...project} />
-      ))}
-    </div>
+    <section className="mt-24">
+      <Container>
+        <div className="flex flex-wrap justify-center gap-6">
+          <h1 className="heading-gradient text-5xl font-semibold">Projects</h1>
+          {projects.map((project, index) => (
+            <ProjectCard key={index} {...project} />
+          ))}
+        </div>
+      </Container>
+    </section>
   );
 }

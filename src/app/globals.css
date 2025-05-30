@@ -100,3 +100,23 @@
 .secondary-button:active {
   background-color: #43464d;
 }
+
+.navbar-main {
+  background-color: rgba(221, 221, 221, 0);
+  background-image: linear-gradient(#13121b, rgba(19, 18, 27, .64) 74%, rgba(19, 18, 27, 0));
+}
+
+.about-section-content {
+  border: 1px solid var(--purple);
+  background-color: var(--light-purple);
+  border-radius: 65px;
+  padding: 35px;
+}
+
+.about-section-text {
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(#fff, #908dff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 153%;
+}

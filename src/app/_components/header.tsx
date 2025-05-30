@@ -8,7 +8,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed w-full text-white shadow-md z-20">
+    <div className="navbar-main fixed w-full text-white z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between flex-wrap py-4">
           {/* Logo */}
