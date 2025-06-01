@@ -2,9 +2,9 @@ import Container from "./container";
 
 export default function AboutSection(){
   return (
-    <section className="max-w-5xl mx-auto">
+    <section className="max-w-5xl mx-auto 2xl:max-w-6xl">
       <Container>
-        <div className="about-section-content p-9 lg:p-14">
+        <div className="about-section-content p-9 lg:p-14 2xl:p-16">
           <h3 className="about-section-text text-xl sm:text-2xl lg:text-3xl ">
             <p>Hey there! I'm Nick.</p>
             <br />

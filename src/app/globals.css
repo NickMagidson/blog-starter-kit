@@ -121,3 +121,12 @@
   background-clip: text;
   line-height: 153%;
 }
+
+/* For projects card on lg
+
+display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+
+*/
