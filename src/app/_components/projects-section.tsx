@@ -1,5 +1,6 @@
 import ProjectCard from './project-card';
 import Container from './container';
+import * as motion from "motion/react-client"
 
 const projects = [
   {
@@ -48,7 +49,15 @@ export default function ProjectsSection() {
     <section className="mt-24 max-w-5xl mx-auto 2xl:max-w-6xl mb-12">
       <Container>
         <div className="flex flex-wrap justify-center gap-6 lg:justify-start">
-          <h1 className="heading-gradient text-5xl font-semibold sm:text-7xl lg:text-8xl lg:text-left">Projects</h1>
+        <motion.h1
+            className="heading-gradient text-5xl font-semibold sm:text-7xl lg:text-8xl lg:text-left"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            Projects
+          </motion.h1>
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
