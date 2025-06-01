@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import * as motion from "motion/react-client"
 
 type ProjectCardProps = {
   title: string;
@@ -18,25 +19,27 @@ export default function ProjectCard({
   tools,
 }: ProjectCardProps) {
   return (
-    <div className="projects-card flex flex-col my-6 shadow-sm borderrounded-lg w-full 
-      lg:flex-row lg:justify-around lg:items-center lg:p-7 ">
-      {/* <div className="relative h-56 m-2.5 overflow-hidden rounded-md lg:w-2/4"> */}
-        
-        <Image
-          src={imageUrl}
-          alt={`${title} thumbnail`}
-          width={300}
-          height={300}
-          style={{ objectFit: 'cover' }}
-          className="rounded-md mx-auto lg:w-[34%] 2xl:mx-0 "
-        />
-      {/* </div> */}
+    <motion.div
+      className="projects-card flex flex-col my-6 shadow-sm border rounded-lg w-full lg:flex-row lg:justify-around lg:items-center lg:p-7"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <Image
+        src={imageUrl}
+        alt={`${title} thumbnail`}
+        width={300}
+        height={300}
+        style={{ objectFit: "cover" }}
+        className="rounded-2xl mx-auto lg:w-[34%] 2xl:mx-0"
+      />
 
       <div className="flex flex-col lg:flex-col lg:p-11 lg:gap-4 max-w-md">
         <div className="flex flex-col p-4 gap-2 lg:p-0">
           <h4 className="mb-2 text-3xl font-semibold lg:text-4xl">{title}</h4>
           <div className="flex flex-wrap gap-2 mb-4">
-            {tools.map((tool, index) => (
+            {tools.map((tool: string, index: number) => (
               <span
                 key={index}
                 className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full"
@@ -66,6 +69,6 @@ export default function ProjectCard({
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
