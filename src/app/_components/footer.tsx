@@ -3,12 +3,12 @@ import { EXAMPLE_PATH } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-200 ">
-        <div className="py-10 flex flex-col items-center">
+    <footer>
+        <div className="py-10 flex flex-col items-center gap-3 md:flex-row md:justify-around md:items-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             © {new Date().getFullYear()} Nick Magidson. All rights reserved.
           </p>
-          <div className="flex space-x-4 mt-4">
+          <div className="flex space-x-4">
             <a
               href="https://www.linkedin.com/in/nickmagidson"
               target="_blank"

@@ -59,9 +59,9 @@ export default function Header() {
               open ? 'block mt-4' : 'hidden lg:block'
             }`}
           >
-            <Link href="/" className="block text-white hover:text-black">
+            {/* <Link href="/" className="block text-white hover:text-black">
               Home
-            </Link>
+            </Link> */}
             {/* <Link href="/about" className="block text-white hover:text-black">
               About
             </Link> */}
@@ -71,9 +71,9 @@ export default function Header() {
             {/* <Link href="/contact" className="block text-white hover:text-black">
               Contact
             </Link> */}
-            <Link href="/contact" className="block text-white hover:text-black">
+            {/* <Link href="/contact" className="block text-white hover:text-black">
               Blog
-            </Link>
+            </Link> */}
           </div>
         </nav>
       </div>
