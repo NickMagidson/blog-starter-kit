@@ -47,8 +47,8 @@ export default function ProjectsSection() {
   return (
     <section className="mt-24">
       <Container>
-        <div className="flex flex-wrap justify-center gap-6">
-          <h1 className="heading-gradient text-5xl font-semibold">Projects</h1>
+        <div className="flex flex-wrap justify-center gap-6 ">
+          <h1 className="heading-gradient text-5xl font-semibold sm:text-7xl lg:text-8xl lg:text-left">Projects</h1>
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}

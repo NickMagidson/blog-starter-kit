@@ -22,7 +22,7 @@ export function PostPreview({
   slug,
 }: Props) {
   return (
-    <div>
+    <div className="projects-card p-3">
       <div className="mb-5">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
@@ -35,7 +35,7 @@ export function PostPreview({
         <DateFormatter dateString={date} />
       </div>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
+      {/* <Avatar name={author.name} picture={author.picture} /> */}
     </div>
   );
 }

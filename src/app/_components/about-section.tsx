@@ -2,10 +2,10 @@ import Container from "./container";
 
 export default function AboutSection(){
   return (
-    <section>
+    <section className="max-w-5xl mx-auto">
       <Container>
-        <div className="about-section-content">
-          <h3 className="about-section-text text-xl">
+        <div className="about-section-content p-9 lg:p-14">
+          <h3 className="about-section-text text-xl sm:text-2xl lg:text-3xl ">
             <p>Hey there! I'm Nick.</p>
             <br />
             <p>A Front-End engineer who’s a little obsessed with creating things.</p>
