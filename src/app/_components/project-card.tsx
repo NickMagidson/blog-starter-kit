@@ -32,7 +32,7 @@ export default function ProjectCard({
         width={300}
         height={300}
         style={{ objectFit: "cover" }}
-        className="rounded-md mx-auto lg:w-[34%] 2xl:mx-0"
+        className="rounded-2xl mx-auto lg:w-[34%] 2xl:mx-0"
       />
 
       <div className="flex flex-col lg:flex-col lg:p-11 lg:gap-4 max-w-md">
