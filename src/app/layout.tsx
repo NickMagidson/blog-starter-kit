@@ -1,12 +1,12 @@
 import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { Analytics } from "@vercel/analytics/next";
+import cn from "classnames";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import cn from "classnames";
-import { ThemeSwitcher } from "./_components/theme-switcher";
 
-import "./globals.css";
 import Header from "./_components/header";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,15 +59,23 @@ export default function RootLayout({
         />
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <script
+          defer
+          data-domain="nickmagidson.com"
+          src="https://plausible.io/js/script.js"
+        ></script>
       </head>
       <body
-        className={cn(inter.className, "bg-[#0b0b0e] text-slate-50"
+        className={cn(
+          inter.className,
+          "bg-[#0b0b0e] text-slate-50"
           //  "dark:bg-slate-900 dark:text-slate-400"
-          )}
+        )}
       >
+        <Analytics />
         <Header />
         {/* <ThemeSwitcher /> */}
-       
+
         <div className="min-h-screen">{children}</div>
         <Footer />
       </body>
