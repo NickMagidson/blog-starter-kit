@@ -1,16 +1,35 @@
+/// <reference path="../../types/react-three-fiber.d.ts" />
 "use client";
 import { OrbitControls, Stars, useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as motion from "motion/react-client";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { Mesh } from "three";
+// import "../../types/react-three-fiber.d.ts";
 import AboutSection2 from "../_components/about-section2";
+import CloseButton from "../_components/close-button";
 import ProjectsSection2 from "../_components/projects-section2";
 import Modal from "./Modal";
 import Planet from "./Planets";
 
-function Sun() {
+// Declare the JSX elements inline
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      mesh: any;
+      group: any;
+      sphereGeometry: any;
+      meshStandardMaterial: any;
+      meshBasicMaterial: any;
+      ambientLight: any;
+      pointLight: any;
+    }
+  }
+}
+
+function Sun(): React.ReactElement {
   const sunTexture = useTexture("/textures/sun.jpg");
-  const coronaRef = useRef();
+  const coronaRef = useRef<Mesh>(null);
   let pulse = 0;
 
   useFrame(() => {
@@ -22,28 +41,38 @@ function Sun() {
   });
 
   return (
+    // @ts-ignore
     <group>
+      {/* @ts-ignore */}
       <mesh>
+        {/* @ts-ignore */}
         <sphereGeometry args={[2, 64, 64]} />
+        {/* @ts-ignore */}
         <meshStandardMaterial
           map={sunTexture}
           emissive={"orange"}
           emissiveIntensity={1.5}
         />
+        {/* @ts-ignore */}
       </mesh>
 
+      {/* @ts-ignore */}
       <mesh ref={coronaRef}>
+        {/* @ts-ignore */}
         <sphereGeometry args={[2.3, 64, 64]} />
+        {/* @ts-ignore */}
         <meshBasicMaterial color="orange" transparent opacity={0.2} side={2} />
+        {/* @ts-ignore */}
       </mesh>
+      {/* @ts-ignore */}
     </group>
   );
 }
 
 export default function SolarSystem() {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<string | null>(null);
 
-  const handleSelect = (planetName) => {
+  const handleSelect = (planetName: string) => {
     setSelected(planetName);
   };
 
@@ -76,8 +105,11 @@ export default function SolarSystem() {
 
       {/* Canvas with Planets */}
       <Canvas camera={{ position: [0, 10, 25], fov: 60 }}>
+        {/* @ts-ignore */}
         <ambientLight intensity={2} />
+        {/* @ts-ignore */}
         <pointLight position={[0, 0, 0]} intensity={2} />
+        {/* @ts-ignore */}
         <Stars />
 
         <Sun />
@@ -122,6 +154,7 @@ export default function SolarSystem() {
           onSelect={handleSelect}
         />
 
+        {/* @ts-ignore */}
         <OrbitControls />
       </Canvas>
 
@@ -140,18 +173,13 @@ export default function SolarSystem() {
                 >
                   About Me
                 </motion.h1>
-                <button
-                  onClick={closeModal}
-                  className="w-8 h-8 flex items-center justify-center text-xl bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0"
-                >
-                  ×
-                </button>
+                <CloseButton onClick={closeModal} />
               </div>
               <AboutSection2 />
             </div>
           )}
           {selected === "Projects" && (
-            <div>
+            <>
               <div className="flex items-center justify-between mb-4">
                 <motion.h1
                   className="heading-gradient text-5xl font-semibold sm:text-7xl"
@@ -162,26 +190,16 @@ export default function SolarSystem() {
                 >
                   Projects
                 </motion.h1>
-                <button
-                  onClick={closeModal}
-                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0 ml-4"
-                >
-                  ×
-                </button>
+                <CloseButton onClick={closeModal} />
               </div>
               <ProjectsSection2 />
-            </div>
+            </>
           )}
           {selected === "Experience" && (
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">Experience</h2>
-                <button
-                  onClick={closeModal}
-                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0 ml-4"
-                >
-                  ×
-                </button>
+                <CloseButton onClick={closeModal} />
               </div>
               <p>
                 I've worked as a React contractor and LLM QA Engineer. I
@@ -194,12 +212,7 @@ export default function SolarSystem() {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">Get In Touch</h2>
-                <button
-                  onClick={closeModal}
-                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0 ml-4"
-                >
-                  ×
-                </button>
+                <CloseButton onClick={closeModal} />
               </div>
               <p>Email: nick@example.com</p>
               <p>LinkedIn: /in/nickmagidson</p>
