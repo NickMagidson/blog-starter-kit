@@ -1,22 +1,24 @@
-'use client'; // if using Next.js App Router
+"use client"; // if using Next.js App Router
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="navbar-main fixed w-full text-white z-20">
+    <div
+      style={{ zIndex: "300000000" }}
+      className="navbar-main fixed w-full text-white z-50"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between flex-wrap py-4">
           {/* Logo */}
           <Image
             src="/assets/blog/moon.png"
             alt="Logo"
-            width={50} 
-            height={50} 
+            width={50}
+            height={50}
             // className="h-10 w-10 rounded-full"
           />
           {/* <div className="flex items-center flex-shrink-0 text-black mr-6">
@@ -34,19 +36,19 @@ export default function Header() {
                 <span
                   aria-hidden="true"
                   className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
-                    open ? 'rotate-45' : '-translate-y-1.5'
+                    open ? "rotate-45" : "-translate-y-1.5"
                   }`}
                 />
                 <span
                   aria-hidden="true"
                   className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
-                    open ? 'opacity-0' : ''
+                    open ? "opacity-0" : ""
                   }`}
                 />
                 <span
                   aria-hidden="true"
                   className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
-                    open ? '-rotate-45' : 'translate-y-1.5'
+                    open ? "-rotate-45" : "translate-y-1.5"
                   }`}
                 />
               </div>
@@ -56,7 +58,7 @@ export default function Header() {
           {/* Menu Items */}
           <div
             className={`w-full lg:flex lg:items-center lg:w-auto lg:justify-end space-y-4 lg:space-y-0 lg:space-x-6 ${
-              open ? 'block mt-4' : 'hidden lg:block'
+              open ? "block mt-4" : "hidden lg:block"
             }`}
           >
             {/* <Link href="/" className="block text-white hover:text-black">

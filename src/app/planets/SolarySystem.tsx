@@ -1,10 +1,10 @@
 "use client";
 import { OrbitControls, Stars, useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
+import * as motion from "motion/react-client";
 import { useRef, useState } from "react";
-// import Modal from "./components/Modal";
-import AboutSection from "../_components/about-section";
-import ProjectsSection from "../_components/projects-section";
+import AboutSection2 from "../_components/about-section2";
+import ProjectsSection2 from "../_components/projects-section2";
 import Modal from "./Modal";
 import Planet from "./Planets";
 
@@ -130,18 +130,59 @@ export default function SolarSystem() {
         <Modal onClose={closeModal}>
           {selected === "About" && (
             <div>
-              <h2 className="text-xl font-bold mb-2">About Me</h2>
-              <AboutSection />
+              <div className="flex items-center justify-between mb-4">
+                <motion.h1
+                  className="heading-gradient text-5xl font-semibold sm:text-7xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  About Me
+                </motion.h1>
+                <button
+                  onClick={closeModal}
+                  className="w-8 h-8 flex items-center justify-center text-xl bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0"
+                >
+                  ×
+                </button>
+              </div>
+              <AboutSection2 />
             </div>
           )}
           {selected === "Projects" && (
             <div>
-              <ProjectsSection />
+              <div className="flex items-center justify-between mb-4">
+                <motion.h1
+                  className="heading-gradient text-5xl font-semibold sm:text-7xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  Projects
+                </motion.h1>
+                <button
+                  onClick={closeModal}
+                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0 ml-4"
+                >
+                  ×
+                </button>
+              </div>
+              <ProjectsSection2 />
             </div>
           )}
           {selected === "Experience" && (
             <div>
-              <h2 className="text-xl font-bold mb-2">Experience</h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold">Experience</h2>
+                <button
+                  onClick={closeModal}
+                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0 ml-4"
+                >
+                  ×
+                </button>
+              </div>
               <p>
                 I've worked as a React contractor and LLM QA Engineer. I
                 specialize in performant UI, component systems, and building for
@@ -151,7 +192,15 @@ export default function SolarSystem() {
           )}
           {selected === "Contact" && (
             <div>
-              <h2 className="text-xl font-bold mb-2">Get In Touch</h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold">Get In Touch</h2>
+                <button
+                  onClick={closeModal}
+                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors flex-shrink-0 ml-4"
+                >
+                  ×
+                </button>
+              </div>
               <p>Email: nick@example.com</p>
               <p>LinkedIn: /in/nickmagidson</p>
               <p>GitHub: @nickcodes</p>
