@@ -109,7 +109,7 @@
 .about-section-content {
   border: 1px solid var(--purple);
   background-color: var(--light-purple);
-  border-radius: 65px;
+  border-radius: 30px;
   padding: 35px;
   /* max-width: 1160px; */
 }

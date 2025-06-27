@@ -9,6 +9,7 @@ import { Mesh } from "three";
 import AboutSection2 from "../_components/about-section2";
 import CloseButton from "../_components/close-button";
 import ExperienceSection from "../_components/experience-section";
+import OpenSourceContributions from "../_components/open-source-contributions";
 import ProjectsSection2 from "../_components/projects-section2";
 import Modal from "./Modal";
 import Planet from "./Planets";
@@ -155,6 +156,16 @@ export default function SolarSystem() {
           onSelect={handleSelect}
         />
 
+        <Planet
+          name="Open Source"
+          orbitRadius={20}
+          orbitSpeed={0.003}
+          size={1.1}
+          texturePath="/textures/mars.jpg"
+          color="#ff6b47"
+          onSelect={handleSelect}
+        />
+
         {/* @ts-ignore */}
         <OrbitControls />
       </Canvas>
@@ -250,7 +261,7 @@ export default function SolarSystem() {
                 <motion.button
                   className="primary-button mx-auto group relative overflow-hidden"
                   onClick={() =>
-                    (window.location.href = "mailto:nick@example.com")
+                    (window.location.href = "mailto:nickmagidson@gmail.com")
                   }
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -399,6 +410,23 @@ export default function SolarSystem() {
                   </p>
                 </motion.div>
               </motion.div>
+            </div>
+          )}
+          {selected === "Open Source" && (
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <motion.h1
+                  className="heading-gradient text-5xl font-semibold sm:text-7xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  Open Source
+                </motion.h1>
+                <CloseButton onClick={closeModal} />
+              </div>
+              <OpenSourceContributions />
             </div>
           )}
         </Modal>

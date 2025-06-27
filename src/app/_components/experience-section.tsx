@@ -12,24 +12,6 @@ interface ExperienceItem {
 
 const experienceData: ExperienceItem[] = [
   {
-    title: "LLM QA Engineer",
-    company: "Tech Company",
-    period: "2023 - Present",
-    description: [
-      "Developed and implemented quality assurance processes for large language models",
-      "Created automated testing frameworks for AI model validation",
-      "Collaborated with ML engineers to improve model performance and reliability",
-    ],
-    technologies: [
-      "Python",
-      "TensorFlow",
-      "PyTorch",
-      "MLOps",
-      "Testing Frameworks",
-    ],
-    logo: "/assets/logos/tech-company-logo.png", // Add your logo path here
-  },
-  {
     title: "React Contractor",
     company: "Various Clients",
     period: "2022 - 2023",
@@ -45,14 +27,107 @@ const experienceData: ExperienceItem[] = [
       "Tailwind CSS",
       "Component Libraries",
     ],
-    logo: "/assets/logos/freelance-logo.png", // Add your logo path here
+    logo: "/assets/blog/moon.png",
+  },
+  {
+    title: "LLM QA Engineer (UI Focus)",
+    company: "Mercor Intelligence",
+    period: "March 2025 – April 2025",
+    description: [
+      "Evaluated AI models for top AI labs by leveraging front-end development and UI design expertise",
+      "Tested and optimized LLM-generated web apps via human feedback-based learning",
+      "Conducted exploratory research into AI-assisted UI defect detection using industry-standard benchmarks",
+    ],
+    technologies: [
+      "React",
+      "JavaScript",
+      "TypeScript",
+      "UI Testing",
+      "AI Evaluation",
+      "Prompt Engineering",
+    ],
+    logo: "/public/assets/blog/mercor-logo.png",
+  },
+  {
+    title: "Front-End Engineer",
+    company: "Urality",
+    period: "Sep 2024 – May 2025",
+    description: [
+      "Contributed to a SaaS platform designed for downtowns and place-based events",
+      "Resolved bugs and defects across a React.js codebase",
+      "Implemented UI for new product features and visualized API data using reusable components",
+    ],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Bootstrap",
+      "API Integration",
+      "Component Design",
+    ],
+    logo: "/assets/logos/urality-logo.png",
+  },
+  {
+    title: "Lead Frontend Engineer",
+    company: "Auditocity",
+    period: "Sep 2023 – Aug 2024",
+    description: [
+      "Led front-end development for an HR auditing SaaS platform",
+      "Refactored CSS architecture and implemented multi-page user flows",
+      "Built reusable React components and integrated .NET backend APIs",
+      "Redesigned UI/UX using Figma prototypes and collaborated with executives in Agile cycles",
+      "Proactively enhanced LLM expertise by participating in workshops. Gaining hands-on experience with vector databases, RAG pipelines, and production-grade AI apps.",
+    ],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "C#",
+      ".NET",
+      "Azure DevOps",
+      "Figma",
+      "Jira",
+      "AI Tooling",
+    ],
+    logo: "/assets/logos/auditocity-logo.png",
+  },
+  {
+    title: "Web Designer & Developer",
+    company: "EDIFi Digital",
+    period: "July 2020 – Sep 2023",
+    description: [
+      "Designed and developed custom marketing websites for small businesses and clients",
+      "Utilized tools like Webflow, WordPress, and React to deliver responsive digital experiences",
+      "Built and deployed AI voice agents for business automation, such as lead vetting and appointment setting",
+    ],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Webflow",
+      "WordPress",
+      "AI Voice Tools",
+    ],
+    logo: "/assets/logos/edifi-logo.png",
+  },
+  {
+    title: "Frontend Developer",
+    company: "Storyplay, LLC",
+    period: "May 2020 – June 2021", // ← Replace with actual dates
+    description: [
+      "Storyplay is an augmented reality game using Unity for a children’s storytelling startup",
+      "Deployed and configured a WordPress website using Bitnami on an AWS EC2 instance",
+      "Customized the theme and CMS to support dynamic storytelling content for children and families",
+      "Handled server setup, DNS configuration, and performance tuning for production readiness",
+    ],
+    technologies: ["WordPress", "JavaScript", "HTML", "CSS", "Figma"],
+    logo: "/assets/logos/storyplay-logo.png", // ← Replace with the actual logo path if available
   },
 ];
 
 export default function ExperienceSection() {
   return (
     <div className="space-y-8">
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -63,7 +138,7 @@ export default function ExperienceSection() {
           I specialize in performant UI, component systems, and building for
           both humans and machines.
         </p>
-      </motion.div>
+      </motion.div> */}
 
       <div className="space-y-6">
         {experienceData.map((experience, index) => (

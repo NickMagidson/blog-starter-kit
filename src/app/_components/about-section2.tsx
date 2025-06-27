@@ -5,7 +5,7 @@ export default function AboutSection2() {
     <section className="max-w-5xl mx-auto 2xl:max-w-6xl z-50">
       <div className="p-2">
         <motion.div
-          className="about-section-content p-9 lg:p-14 2xl:p-16"
+          className="about-section-content backdrop-blur-sm p-9 lg:p-14 2xl:p-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
