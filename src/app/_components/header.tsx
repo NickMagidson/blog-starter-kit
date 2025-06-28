@@ -2,7 +2,6 @@
 
 import * as motion from "motion/react-client";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import Modal from "../planets/Modal";
 import AboutSection2 from "./about-section2";
@@ -109,12 +108,12 @@ export default function Header() {
             >
               Open Source
             </button>
-            <Link
+            {/* <Link
               href="/"
               className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
             >
               Blog
-            </Link>
+            </Link> */}
           </div>
         </nav>
       </div>
