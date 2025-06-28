@@ -130,3 +130,19 @@ display: flex;
   gap: 1rem;
 
 */
+
+
+
+.tutorial-alert {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 6.5rem;
+}
+
+@media (min-width: 770px) {
+.tutorial-alert {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 4.5rem;
+}
+}

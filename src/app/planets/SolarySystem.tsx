@@ -139,6 +139,20 @@ export default function SolarSystem() {
         </motion.p>
       </div> */}
 
+      {/* Alert Box */}
+      <div className="tutorial-alert z-10">
+        <motion.div
+          className="backdrop-blur-md border border-purple-500/30 rounded-lg px-4 py-2 shadow-none"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+        >
+          <p className="text-purple-100 text-xs font-normal opacity-80">
+            ✨ Select a planet to learn more
+          </p>
+        </motion.div>
+      </div>
+
       {/* Canvas with Planets */}
       <Canvas camera={{ position: [0, 10, 25], fov: 60 }}>
         {/* @ts-ignore */}
