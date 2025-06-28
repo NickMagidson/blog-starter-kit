@@ -12,19 +12,21 @@ interface ExperienceItem {
 
 const experienceData: ExperienceItem[] = [
   {
-    title: "React Contractor",
+    title: "Fullstack Engineer",
     company: "Various Clients",
-    period: "2022 - 2023",
+    period: "2025 - Present",
     description: [
-      "Built performant user interfaces for multiple client projects",
-      "Specialized in component systems and reusable UI libraries",
-      "Delivered high-quality solutions for both B2B and B2C applications",
+      "Build and maintain full-stack web applications using Next.js, React, Node.js, and PostgreSQL.",
+      "Integrate AI capabilities into web products, including natural language processing, chatbots, and content generation using OpenAI and LangChain",
+      "Architect and deploy applications using platforms like Vercel, Render, and Docker-based environments",
     ],
     technologies: [
       "React",
       "TypeScript",
       "Next.js",
       "Tailwind CSS",
+      "Supabase",
+      "Docker",
       "Component Libraries",
     ],
     logo: "/assets/blog/moon.png",
@@ -40,16 +42,15 @@ const experienceData: ExperienceItem[] = [
     ],
     technologies: [
       "React",
-      "JavaScript",
       "TypeScript",
       "UI Testing",
       "AI Evaluation",
       "Prompt Engineering",
     ],
-    logo: "/public/assets/blog/mercor-logo.png",
+    logo: "/assets/blog/mercor-logo.png",
   },
   {
-    title: "Front-End Engineer",
+    title: "Frontend Engineer",
     company: "Urality",
     period: "Sep 2024 – May 2025",
     description: [
@@ -64,7 +65,7 @@ const experienceData: ExperienceItem[] = [
       "API Integration",
       "Component Design",
     ],
-    logo: "/assets/logos/urality-logo.png",
+    logo: "/assets/blog/urality_logo.jpg",
   },
   {
     title: "Lead Frontend Engineer",
@@ -88,7 +89,7 @@ const experienceData: ExperienceItem[] = [
       "Jira",
       "AI Tooling",
     ],
-    logo: "/assets/logos/auditocity-logo.png",
+    logo: "/assets/blog/small-logo.png",
   },
   {
     title: "Web Designer & Developer",
@@ -107,7 +108,7 @@ const experienceData: ExperienceItem[] = [
       "WordPress",
       "AI Voice Tools",
     ],
-    logo: "/assets/logos/edifi-logo.png",
+    logo: "/assets/blog/edifi-logo.png",
   },
   {
     title: "Frontend Developer",
@@ -140,7 +141,7 @@ export default function ExperienceSection() {
         </p>
       </motion.div> */}
 
-      <div className="space-y-6">
+      <div className="space-y-6 max-w-4xl lg:max-w-3xl mx-auto">
         {experienceData.map((experience, index) => (
           <motion.div
             key={index}
@@ -211,7 +212,7 @@ export default function ExperienceSection() {
         ))}
       </div>
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
@@ -221,7 +222,7 @@ export default function ExperienceSection() {
         <p className="text-gray-400 text-sm">
           Looking for new opportunities to create innovative solutions
         </p>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }

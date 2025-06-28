@@ -1,5 +1,6 @@
 "use client";
 import * as motion from "motion/react-client";
+import Image from "next/image";
 
 // Previous version focused on individual contributions
 // type Contribution = {
@@ -29,7 +30,8 @@ type OpenSourceProject = {
     | "Developer Tools"
     | "UI/UX"
     | "Animation"
-    | "Build Tools";
+    | "Build Tools"
+    | "Data Visualization";
   technologies: string[];
   repoUrl: string;
   websiteUrl?: string;
@@ -38,138 +40,107 @@ type OpenSourceProject = {
   myInvolvement: string;
   whyImportant: string;
   keyFeatures: string[];
+  screenshotUrl?: string;
 };
 
 // const openSourceProjects: OpenSourceProject[] = [
 const openSourceProjects: OpenSourceProject[] = [
   {
-    projectName: "React Three Fiber",
+    projectName: "Clean and Green Philly",
     description:
-      "A React renderer for Three.js that brings declarative, reusable, and interactive 3D graphics to the web",
+      "Dashboard to target Philly vacant properties for anti-gun violence interventions.",
+    category: "Data Visualization",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Python"],
+    repoUrl: "https://github.com/CodeForPhilly/clean-and-green-philly",
+    websiteUrl: "https://www.cleanandgreenphilly.org/",
+    stars: 47,
+    language: "TypeScript",
+    myInvolvement:
+      "Contributing to the front-end through bug fixes, and feature enhancements.",
+    whyImportant:
+      "Supports community-driven strategies to reduce gun violence and promote safer neighborhoods by making city property data actionable.",
+    keyFeatures: [
+      "Interactive Map of Vacant Lots",
+      "Ownership and Zoning Filters",
+      "Data from City of Philadelphia",
+    ],
+    screenshotUrl: "/assets/blog/clean-green.png",
+  },
+  {
+    projectName: "OpenSpace",
+    description:
+      "An open-source interactive data visualization software for exploring the universe, developed in collaboration with NASA and other research institutions.",
     category: "3D/Graphics",
-    technologies: ["React", "Three.js", "TypeScript", "WebGL"],
-    repoUrl: "https://github.com/pmndrs/react-three-fiber",
-    websiteUrl: "https://docs.pmnd.rs/react-three-fiber",
-    stars: 26500,
+    technologies: [
+      "TypeScript",
+      "React",
+      "Vite",
+      "CSS Modules",
+      "C++",
+      "OpenGL",
+      "Lua",
+    ],
+    repoUrl: "https://github.com/OpenSpace/OpenSpace",
+    websiteUrl: "https://openspaceproject.com/",
+    stars: 18,
     language: "TypeScript",
     myInvolvement:
-      "Active contributor focusing on TypeScript definitions and 3D scene optimization",
+      "Contributing to the Web GUI frontend with React and TypeScript, focusing on improving user interface responsiveness and extending control panel functionality for the core OpenSpace engine.",
     whyImportant:
-      "Revolutionizes how developers create 3D web experiences by making Three.js accessible through React",
+      "OpenSpace bridges space science and public engagement through immersive, real-time 3D visualizations backed by real astronomical data.",
     keyFeatures: [
-      "Declarative 3D",
-      "React Ecosystem",
-      "Performance Optimized",
-      "TypeScript Support",
+      "Real-Time Universe Exploration",
+      "Remote Web Control Panel",
+      "Customizable UI with React",
+      "NASA and ESA Mission Support",
     ],
+    screenshotUrl: "/assets/blog/space-shot.jpg",
   },
-  {
-    projectName: "Next.js",
-    description:
-      "The React Framework for Production - provides hybrid static & server rendering, smart bundling, and more",
-    category: "Web Framework",
-    technologies: ["React", "Node.js", "TypeScript", "Webpack"],
-    repoUrl: "https://github.com/vercel/next.js",
-    websiteUrl: "https://nextjs.org",
-    stars: 124000,
-    language: "JavaScript",
-    myInvolvement:
-      "Contributor to performance optimizations and developer experience improvements",
-    whyImportant:
-      "The industry standard for React applications, powering millions of websites worldwide",
-    keyFeatures: [
-      "Zero Config",
-      "Hybrid SSG/SSR",
-      "API Routes",
-      "Built-in CSS",
-    ],
-  },
-  {
-    projectName: "Three.js",
-    description:
-      "JavaScript 3D library that makes WebGL simpler and enables stunning 3D graphics in web browsers",
-    category: "3D/Graphics",
-    technologies: ["JavaScript", "WebGL", "GLSL", "Canvas"],
-    repoUrl: "https://github.com/mrdoob/three.js",
-    websiteUrl: "https://threejs.org",
-    stars: 101000,
-    language: "JavaScript",
-    myInvolvement:
-      "Documentation contributor and community supporter for WebGL shader examples",
-    whyImportant:
-      "The foundation of 3D web development, enabling everything from games to data visualization",
-    keyFeatures: [
-      "WebGL Abstraction",
-      "Rich Ecosystem",
-      "Cross-Platform",
-      "Extensive Documentation",
-    ],
-  },
-  {
-    projectName: "Tailwind CSS",
-    description:
-      "Utility-first CSS framework that enables rapid UI development with low-level utility classes",
-    category: "UI/UX",
-    technologies: ["CSS", "PostCSS", "JavaScript", "Node.js"],
-    repoUrl: "https://github.com/tailwindlabs/tailwindcss",
-    websiteUrl: "https://tailwindcss.com",
-    stars: 82000,
-    language: "JavaScript",
-    myInvolvement:
-      "Contributor to 3D transform utilities and responsive design improvements",
-    whyImportant:
-      "Transformed how developers approach CSS by promoting utility-first design principles",
-    keyFeatures: [
-      "Utility-First",
-      "Responsive Design",
-      "Component-Friendly",
-      "Customizable",
-    ],
-  },
-  {
-    projectName: "Framer Motion",
-    description:
-      "Production-ready motion library for React that makes creating animations simple and performant",
-    category: "Animation",
-    technologies: ["React", "TypeScript", "Animation API", "CSS"],
-    repoUrl: "https://github.com/framer/motion",
-    websiteUrl: "https://www.framer.com/motion/",
-    stars: 23000,
-    language: "TypeScript",
-    myInvolvement:
-      "Performance optimization contributor and animation pattern advocate",
-    whyImportant:
-      "Sets the standard for React animations with its intuitive API and smooth performance",
-    keyFeatures: [
-      "Declarative API",
-      "Gesture Support",
-      "Layout Animations",
-      "Server Rendering",
-    ],
-  },
-  {
-    projectName: "Vite",
-    description:
-      "Next-generation frontend tooling that provides lightning-fast development with instant hot module replacement",
-    category: "Build Tools",
-    technologies: ["JavaScript", "Rollup", "ESBuild", "Node.js"],
-    repoUrl: "https://github.com/vitejs/vite",
-    websiteUrl: "https://vitejs.dev",
-    stars: 67000,
-    language: "TypeScript",
-    myInvolvement:
-      "Contributor to 3D asset handling and development server optimizations",
-    whyImportant:
-      "Revolutionized frontend development with native ES modules and instant HMR",
-    keyFeatures: [
-      "Instant HMR",
-      "Native ESM",
-      "Optimized Builds",
-      "Plugin Ecosystem",
-    ],
-  },
+  // {
+  //   projectName: "Three.js",
+  //   description:
+  //     "JavaScript 3D library that makes WebGL simpler and enables stunning 3D graphics in web browsers",
+  //   category: "3D/Graphics",
+  //   technologies: ["JavaScript", "WebGL", "GLSL", "Canvas"],
+  //   repoUrl: "https://github.com/mrdoob/three.js",
+  //   websiteUrl: "https://threejs.org",
+  //   stars: 101000,
+  //   language: "JavaScript",
+  //   myInvolvement:
+  //     "Documentation contributor and community supporter for WebGL shader examples",
+  //   whyImportant:
+  //     "The foundation of 3D web development, enabling everything from games to data visualization",
+  //   keyFeatures: [
+  //     "WebGL Abstraction",
+  //     "Rich Ecosystem",
+  //     "Cross-Platform",
+  //     "Extensive Documentation",
+  //   ],
+  //   screenshotUrl: "/assets/blog/threejs-screenshot.png",
+  // },
+  // {
+  //   projectName: "Tailwind CSS",
+  //   description:
+  //     "Utility-first CSS framework that enables rapid UI development with low-level utility classes",
+  //   category: "UI/UX",
+  //   technologies: ["CSS", "PostCSS", "JavaScript", "Node.js"],
+  //   repoUrl: "https://github.com/tailwindlabs/tailwindcss",
+  //   websiteUrl: "https://tailwindcss.com",
+  //   stars: 82000,
+  //   language: "JavaScript",
+  //   myInvolvement:
+  //     "Contributor to 3D transform utilities and responsive design improvements",
+  //   whyImportant:
+  //     "Transformed how developers approach CSS by promoting utility-first design principles",
+  //   keyFeatures: [
+  //     "Utility-First",
+  //     "Responsive Design",
+  //     "Component-Friendly",
+  //     "Customizable",
+  //   ],
+  //   screenshotUrl: "/assets/blog/tailwind-screenshot.png",
+  // },
 ];
-
 const categoryColors = {
   "3D/Graphics": "bg-purple-100 text-purple-800 border-purple-200",
   "Web Framework": "bg-blue-100 text-blue-800 border-blue-200",
@@ -177,6 +148,7 @@ const categoryColors = {
   "UI/UX": "bg-pink-100 text-pink-800 border-pink-200",
   Animation: "bg-orange-100 text-orange-800 border-orange-200",
   "Build Tools": "bg-yellow-100 text-yellow-800 border-yellow-200",
+  "Data Visualization": "bg-cyan-100 text-cyan-800 border-cyan-200",
 };
 
 const languageColors = {
@@ -199,7 +171,7 @@ export default function OpenSourceContributions() {
         transition={{ duration: 0.6 }}
       >
         <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-          🌟 Open-source projects I actively contribute to and support
+          🌟 Here are some open source projects I contribute to
         </p>
       </motion.div>
 
@@ -245,7 +217,7 @@ export default function OpenSourceContributions() {
                       {project.language}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 text-yellow-400">
+                  {/* <div className="flex items-center gap-1 text-yellow-400">
                     <svg
                       className="w-4 h-4"
                       fill="currentColor"
@@ -253,13 +225,24 @@ export default function OpenSourceContributions() {
                     >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
-                    <span className="text-sm">
-                      {(project.stars / 1000).toFixed(1)}k
-                    </span>
-                  </div>
+                    <span className="text-sm">{project.stars}</span>
+                  </div> */}
                 </div>
               </div>
             </div>
+
+            {/* Screenshot */}
+            {project.screenshotUrl && (
+              <div className="mb-4 rounded-lg overflow-hidden">
+                <Image
+                  src={project.screenshotUrl}
+                  alt={`${project.projectName} screenshot`}
+                  width={400}
+                  height={250}
+                  className="w-full h-48 object-cover rounded-lg border border-gray-600/50"
+                />
+              </div>
+            )}
 
             {/* Description */}
             <p className="text-gray-300 mb-4 leading-relaxed">
@@ -267,11 +250,11 @@ export default function OpenSourceContributions() {
             </p>
 
             {/* Why Important */}
-            <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 mb-4">
+            {/* <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 mb-4">
               <p className="text-blue-300 text-sm font-medium">
                 🚀 Why it matters: {project.whyImportant}
               </p>
-            </div>
+            </div> */}
 
             {/* My Involvement */}
             <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-3 mb-4">

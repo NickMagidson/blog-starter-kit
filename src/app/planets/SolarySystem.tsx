@@ -161,7 +161,7 @@ export default function SolarSystem() {
           orbitRadius={20}
           orbitSpeed={0.003}
           size={1.1}
-          texturePath="/textures/mars.jpg"
+          texturePath="/textures/saturn.jpeg"
           color="#ff6b47"
           onSelect={handleSelect}
         />
