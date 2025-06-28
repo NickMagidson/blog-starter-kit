@@ -4,7 +4,7 @@ import { OrbitControls, Stars, useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as motion from "motion/react-client";
 import React, { useRef, useState } from "react";
-import { Mesh } from "three";
+import { BufferGeometry, Mesh, Vector3 } from "three";
 // import "../../types/react-three-fiber.d.ts";
 import AboutSection2 from "../_components/about-section2";
 import CloseButton from "../_components/close-button";
@@ -25,6 +25,9 @@ declare global {
       meshBasicMaterial: any;
       ambientLight: any;
       pointLight: any;
+      line: any;
+      lineBasicMaterial: any;
+      bufferGeometry: any;
     }
   }
 }
@@ -68,6 +71,37 @@ function Sun(): React.ReactElement {
       </mesh>
       {/* @ts-ignore */}
     </group>
+  );
+}
+
+// Orbit Ring Component
+function OrbitRing({
+  radius,
+  color = "#333333",
+}: {
+  radius: number;
+  color?: string;
+}) {
+  const orbitRef = useRef<any>(null);
+
+  // Create orbit ring geometry
+  const points = [];
+  for (let i = 0; i <= 64; i++) {
+    const angle = (i / 64) * Math.PI * 2;
+    points.push(
+      new Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius)
+    );
+  }
+
+  const geometry = new BufferGeometry().setFromPoints(points);
+
+  return (
+    // @ts-ignore
+    <line ref={orbitRef} geometry={geometry}>
+      {/* @ts-ignore */}
+      <lineBasicMaterial color={color} transparent opacity={0.3} />
+      {/* @ts-ignore */}
+    </line>
   );
 }
 
@@ -165,6 +199,13 @@ export default function SolarSystem() {
           color="#ff6b47"
           onSelect={handleSelect}
         />
+
+        {/* Orbit Rings */}
+        <OrbitRing radius={8} color="#33ccff" />
+        <OrbitRing radius={12} color="#ff4f4f" />
+        <OrbitRing radius={6} color="#cc66ff" />
+        <OrbitRing radius={16} color="#aaff55" />
+        <OrbitRing radius={20} color="#ff6b47" />
 
         {/* @ts-ignore */}
         <OrbitControls />
