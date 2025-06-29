@@ -15,6 +15,7 @@ declare global {
       mesh: any;
       group: any;
       sphereGeometry: any;
+      ringGeometry: any;
       meshStandardMaterial: any;
       meshBasicMaterial: any;
       ambientLight: any;
@@ -181,6 +182,7 @@ export default function SolarSystem() {
           texturePath="/textures/saturn.jpeg"
           color="#ff6b47"
           onSelect={handleSelect}
+          hasRings={true}
         />
 
         {/* Orbit Rings */}

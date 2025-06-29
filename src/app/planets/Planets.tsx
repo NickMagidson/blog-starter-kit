@@ -12,6 +12,7 @@ type PlanetProps = {
   size?: number;
   color?: string;
   texturePath: string;
+  hasRings?: boolean;
 };
 
 export default function Planet({
@@ -22,6 +23,7 @@ export default function Planet({
   size = 1,
   color = "orange",
   texturePath,
+  hasRings = false,
 }: PlanetProps) {
   const [hovered, setHovered] = useState(false);
   const groupRef = useRef<THREE.Group>(null); // 🆕 Ref for the whole planet group
@@ -125,6 +127,42 @@ export default function Planet({
         />
         {/* @ts-ignore */}
       </mesh>
+
+      {/* Saturn Rings */}
+      {hasRings && (
+        <>
+          {/* @ts-ignore */}
+          <mesh rotation={[Math.PI / 2, 0, 0]}>
+            {/* @ts-ignore */}
+            <ringGeometry args={[size * 1.2, size * 1.5, 64]} />
+            {/* @ts-ignore */}
+            <meshStandardMaterial
+              color="#D4AF37"
+              transparent
+              opacity={0.7}
+              side={2}
+              metalness={0.1}
+              roughness={0.8}
+            />
+            {/* @ts-ignore */}
+          </mesh>
+          {/* @ts-ignore */}
+          <mesh rotation={[Math.PI / 2, 0, 0]}>
+            {/* @ts-ignore */}
+            <ringGeometry args={[size * 1.6, size * 1.9, 64]} />
+            {/* @ts-ignore */}
+            <meshStandardMaterial
+              color="#B8860B"
+              transparent
+              opacity={0.5}
+              side={2}
+              metalness={0.1}
+              roughness={0.8}
+            />
+            {/* @ts-ignore */}
+          </mesh>
+        </>
+      )}
       {/* @ts-ignore */}
     </group>
   );
