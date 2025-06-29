@@ -193,7 +193,13 @@ export default function SolarSystem() {
         <OrbitRing radius={20} color="#ff6b47" />
 
         {/* @ts-ignore */}
-        <OrbitControls />
+        <OrbitControls
+          maxDistance={50}
+          minDistance={5}
+          enablePan={false}
+          enableDamping={true}
+          dampingFactor={0.05}
+        />
       </Canvas>
     </div>
   );
