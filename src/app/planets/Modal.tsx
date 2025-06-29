@@ -10,10 +10,17 @@ interface ModalProps {
 }
 
 export default function Modal({ children, onClose }: ModalProps) {
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget && onClose) {
+      onClose();
+    }
+  };
+
   return (
     <div
       style={{ zIndex: "200000000" }}
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70"
+      onClick={handleBackdropClick}
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}

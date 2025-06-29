@@ -48,7 +48,7 @@ const openSourceProjects: OpenSourceProject[] = [
   {
     projectName: "Clean and Green Philly",
     description:
-      "Dashboard to target Philly vacant properties for anti-gun violence interventions.",
+      "Dashboard to target Philly vacant properties for anti-gun violence interventions. Empowering community groups to carry out cleaning and greening interventions",
     category: "Data Visualization",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Python"],
     repoUrl: "https://github.com/CodeForPhilly/clean-and-green-philly",
@@ -71,21 +71,13 @@ const openSourceProjects: OpenSourceProject[] = [
     description:
       "An open-source interactive data visualization software for exploring the universe, developed in collaboration with NASA and other research institutions.",
     category: "3D/Graphics",
-    technologies: [
-      "TypeScript",
-      "React",
-      "Vite",
-      "CSS Modules",
-      "C++",
-      "OpenGL",
-      "Lua",
-    ],
+    technologies: ["TypeScript", "React", "C++", "OpenGL", "Lua"],
     repoUrl: "https://github.com/OpenSpace/OpenSpace",
     websiteUrl: "https://openspaceproject.com/",
     stars: 18,
     language: "TypeScript",
     myInvolvement:
-      "Contributing to the Web GUI frontend with React and TypeScript, focusing on improving user interface responsiveness and extending control panel functionality for the core OpenSpace engine.",
+      "Contributing to the Web GUI frontend with React and TypeScript, focusing on improving the user interface.",
     whyImportant:
       "OpenSpace bridges space science and public engagement through immersive, real-time 3D visualizations backed by real astronomical data.",
     keyFeatures: [
