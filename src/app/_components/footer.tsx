@@ -6,7 +6,7 @@ export function Footer() {
     >
       <div className="py-5 flex flex-col items-center gap-3 md:flex-row md:justify-around md:items-center">
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} Nick Magidson. All rights reserved.
+          © {new Date().getFullYear()} Nick Magidson | Fullstack Engineer.
         </p>
         <div className="flex space-x-4">
           <a
