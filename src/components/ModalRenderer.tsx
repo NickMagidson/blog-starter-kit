@@ -208,8 +208,8 @@ export default function ModalRenderer() {
         </div>
       )}
       {activeModal === "Open Source" && (
-        <div className="flex flex-col h-full">
-          <div className="flex items-center justify-between mb-6 sticky top-0 bg-black/90 backdrop-blur-sm z-10 pb-4">
+        <div>
+          <div className="flex items-center justify-between bg-black/90 backdrop-blur-sm z-10 pb-4">
             <motion.h1
               className="heading-gradient text-5xl font-semibold sm:text-7xl"
               initial={{ opacity: 0, y: 20 }}
