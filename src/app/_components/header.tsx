@@ -36,7 +36,7 @@ export default function Header() {
           <div className="block lg:hidden">
             <button
               onClick={() => setOpen(!open)}
-              className="text-gray-700 w-10 h-10 relative focus:outline-none bg-white rounded"
+              className="text-gray-700 w-10 h-10 relative focus:outline-none bg-slate-300 rounded"
             >
               <span className="sr-only">Open main menu</span>
               <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">

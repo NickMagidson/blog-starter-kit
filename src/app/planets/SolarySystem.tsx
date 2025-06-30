@@ -4,7 +4,7 @@ import { useModal } from "@/contexts/ModalContext";
 import { OrbitControls, Stars, useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as motion from "motion/react-client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BufferGeometry, Mesh, Vector3 } from "three";
 import Planet from "./Planets";
 
@@ -69,6 +69,83 @@ function Sun(): React.ReactElement {
   );
 }
 
+// Loading Component
+function LoadingScreen({ progress = 0 }: { progress?: number }) {
+  return (
+    <div className="fixed inset-0 bg-gradient-to-b from-black via-purple-900/20 to-black flex items-center justify-center z-50">
+      <div className="text-center">
+        <motion.div
+          className="relative w-24 h-24 mb-8 mx-auto"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        >
+          {/* Outer ring */}
+          <div className="absolute inset-0 border-4 border-purple-500/20 rounded-full"></div>
+          {/* Spinning ring */}
+          <div className="absolute inset-0 border-4 border-transparent border-t-purple-500 rounded-full animate-spin"></div>
+          {/* Inner spinning ring */}
+          <div
+            className="absolute inset-3 border-2 border-transparent border-t-blue-400 rounded-full animate-spin"
+            style={{ animationDirection: "reverse", animationDuration: "1.5s" }}
+          ></div>
+          {/* Core */}
+          <div className="absolute inset-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="space-y-4"
+        >
+          <h2 className="text-3xl font-bold text-white">
+            Loading Solar System
+          </h2>
+          <p className="text-purple-300 text-sm">
+            Initializing planets and textures...
+          </p>
+
+          {/* Progress Bar */}
+          <div className="w-64 mx-auto">
+            <div className="flex justify-between text-xs text-purple-300 mb-2">
+              <span>Progress</span>
+              <span>{Math.round(progress)}%</span>
+            </div>
+            <div className="h-2 bg-purple-900/30 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-to-r from-purple-500 to-blue-400 rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              />
+            </div>
+          </div>
+
+          <motion.div
+            className="flex justify-center space-x-1 mt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                className="w-2 h-2 bg-purple-500 rounded-full"
+                animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              />
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
 // Orbit Ring Component
 function OrbitRing({
   radius,
@@ -102,13 +179,58 @@ function OrbitRing({
 
 export default function SolarSystem() {
   const { openModal } = useModal();
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadProgress, setLoadProgress] = useState(0);
 
   const handleSelect = (planetName: string) => {
     openModal(planetName as any);
   };
 
+  // Enhanced loading progress with more realistic timing
+  useEffect(() => {
+    let progressValue = 0;
+    const progressInterval = setInterval(() => {
+      progressValue += Math.random() * 8 + 2; // Random progress between 2-10
+
+      if (progressValue >= 100) {
+        progressValue = 100;
+        setLoadProgress(100);
+
+        // Small delay after reaching 100% before hiding loading screen
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+
+        clearInterval(progressInterval);
+      } else {
+        setLoadProgress(progressValue);
+      }
+    }, 150); // Update every 150ms for smoother progress
+
+    // Fallback to ensure loading doesn't take too long
+    const maxTimer = setTimeout(() => {
+      setLoadProgress(100);
+      setTimeout(() => setIsLoading(false), 500);
+      clearInterval(progressInterval);
+    }, 4000); // Max 4 seconds loading time
+
+    return () => {
+      clearInterval(progressInterval);
+      clearTimeout(maxTimer);
+    };
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen progress={loadProgress} />;
+  }
+
   return (
-    <div className="relative w-full h-screen">
+    <motion.div
+      className="relative w-full h-screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
       {/* Alert Box */}
       <div className="tutorial-alert z-10">
         <motion.div
@@ -201,6 +323,6 @@ export default function SolarSystem() {
           dampingFactor={0.05}
         />
       </Canvas>
-    </div>
+    </motion.div>
   );
 }
