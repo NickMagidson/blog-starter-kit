@@ -8,9 +8,29 @@ import ProjectsSection2 from "@/app/_components/projects-section2";
 import Modal from "@/app/planets/Modal";
 import { useModal } from "@/contexts/ModalContext";
 import * as motion from "motion/react-client";
+import { useEffect } from "react";
 
 export default function ModalRenderer() {
   const { activeModal, closeModal } = useModal();
+
+  // Handle ESC key press to close modal
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && activeModal) {
+        closeModal();
+      }
+    };
+
+    // Add event listener when modal is open
+    if (activeModal) {
+      document.addEventListener("keydown", handleEscKey);
+    }
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [activeModal, closeModal]);
 
   if (!activeModal) return null;
 

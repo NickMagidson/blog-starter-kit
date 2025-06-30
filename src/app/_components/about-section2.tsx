@@ -15,17 +15,39 @@ export default function AboutSection2() {
             <p>Hey there! I'm Nick.</p>
             <br />
             <p>
-              A Front-End engineer who’s a little obsessed with creating things.
+              A fullstack engineer who's a little obsessed with creating things.
             </p>
             <br />
             <p>
-              My work experience involves React and Next.js, DevOps tools such
-              as Microsoft Azure, and UI/UX design using Figma.
+              I specialize in the front-end with tools like React and Next.js,
+              but I also dive into backend work, DevOps workflows, and AI
+              integrations when the project calls for it.
             </p>
             <br />
             <p>
-              When I’m not writing code, you’ll probably find me writing music
-              and exploring new coffee shops.
+              On the backend, I’m comfortable working with Node.js, SQL, Python,
+              and Supabase. I’ve also gotten hands-on with DevOps tools like
+              Docker, AWS, and Azure to deploy and maintain fullstack
+              applications.
+            </p>
+            <br />
+            <p>
+              When it comes to AI, I build with LLMs—leveraging tools like
+              OpenAI, LangChain, and vector databases to create intelligent,
+              conversational experiences. I enjoy exploring retrieval-augmented
+              generation (RAG), prompt engineering, n8n workflows, and
+              context-aware automation.
+            </p>
+            <br />
+            <p>
+              Lately, I’ve been diving deeper into building geospatial
+              applications using tools like Mapbox and Cesium, with a focus on
+              visualizing space data.
+            </p>
+            <br />
+            <p>
+              When I’m not writing code, you’ll probably find me writing music,
+              exploring new coffee shops, and collecting way too many plants.
             </p>
           </h3>
         </motion.div>
