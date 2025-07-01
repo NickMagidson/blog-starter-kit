@@ -1,0 +1,169 @@
+"use client";
+import { Html, useTexture } from "@react-three/drei";
+import { ThreeEvent, useFrame } from "@react-three/fiber";
+import { useRef, useState } from "react";
+import * as THREE from "three";
+
+type PlanetProps = {
+  orbitRadius?: number;
+  orbitSpeed?: number;
+  name: string;
+  onSelect: (name: string) => void;
+  size?: number;
+  color?: string;
+  texturePath: string;
+  hasRings?: boolean;
+};
+
+export default function Planet({
+  orbitRadius = 5,
+  orbitSpeed = 0.01,
+  name,
+  onSelect,
+  size = 1,
+  color = "orange",
+  texturePath,
+  hasRings = false,
+}: PlanetProps) {
+  const [hovered, setHovered] = useState(false);
+  const groupRef = useRef<THREE.Group>(null); // 🆕 Ref for the whole planet group
+  const planetRef = useRef<THREE.Mesh>(null);
+  const glowRef = useRef<THREE.Mesh>(null);
+  const angleRef = useRef(Math.random() * Math.PI * 2);
+  let pulse = Math.random() * Math.PI * 2;
+
+  const texture = useTexture(texturePath);
+
+  useFrame(() => {
+    // Orbit motion — move the whole group
+    angleRef.current += orbitSpeed;
+    const x = Math.cos(angleRef.current) * orbitRadius;
+    const z = Math.sin(angleRef.current) * orbitRadius;
+    if (groupRef.current) {
+      groupRef.current.position.set(x, 0, z);
+    }
+
+    // Planet rotation
+    if (planetRef.current) {
+      planetRef.current.rotation.y += 0.01;
+    }
+
+    // Glow pulse
+    pulse += 0.03;
+    if (glowRef.current) {
+      const baseScale = 1.2;
+      const pulseAmount = 0.05;
+      const scale = hovered ? baseScale + Math.sin(pulse) * pulseAmount : 0;
+      glowRef.current.scale.set(scale, scale, scale);
+    }
+  });
+
+  return (
+    // @ts-ignore
+    <group ref={groupRef}>
+      {/* Persistent Title Label */}
+      {/* @ts-ignore */}
+      <Html
+        position={[0, size * 1.6, 0]}
+        center
+        distanceFactor={10}
+        style={{
+          padding: "2px 6px",
+          background: "rgba(0, 0, 0, 0.5)",
+          borderRadius: "6px",
+          color: "white",
+          fontSize: "4rem",
+          fontWeight: 500,
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+          opacity: hovered ? 1 : 0.7,
+          transition: "opacity 0.3s ease",
+        }}
+      >
+        {name}
+      </Html>
+
+      {/* Planet */}
+      {/* @ts-ignore */}
+      <mesh
+        ref={planetRef}
+        onClick={() => onSelect(name)}
+        onPointerOver={(e: ThreeEvent<PointerEvent>) => {
+          e.stopPropagation();
+          setHovered(true);
+        }}
+        onPointerOut={(e: ThreeEvent<PointerEvent>) => {
+          e.stopPropagation();
+          setHovered(false);
+        }}
+      >
+        {/* @ts-ignore */}
+        <sphereGeometry args={[size, 64, 64]} />
+        {/* @ts-ignore */}
+        <meshStandardMaterial
+          map={texture}
+          emissive={hovered ? color : "black"}
+          emissiveIntensity={hovered ? 0.8 : 0}
+          roughness={0.5}
+          metalness={0.3}
+        />
+        {/* @ts-ignore */}
+      </mesh>
+
+      {/* Glow */}
+      {/* @ts-ignore */}
+      <mesh ref={glowRef}>
+        {/* @ts-ignore */}
+        <sphereGeometry args={[size * 1.3, 64, 64]} />
+        {/* @ts-ignore */}
+        <meshStandardMaterial
+          color={color}
+          emissive={color}
+          emissiveIntensity={hovered ? 0.7 : 0}
+          transparent
+          opacity={0.4}
+          side={2}
+          depthWrite={false}
+        />
+        {/* @ts-ignore */}
+      </mesh>
+
+      {/* Saturn Rings */}
+      {hasRings && (
+        <>
+          {/* @ts-ignore */}
+          <mesh rotation={[Math.PI / 2, 0, 0]}>
+            {/* @ts-ignore */}
+            <ringGeometry args={[size * 1.2, size * 1.5, 64]} />
+            {/* @ts-ignore */}
+            <meshStandardMaterial
+              color="#D4AF37"
+              transparent
+              opacity={0.7}
+              side={2}
+              metalness={0.1}
+              roughness={0.8}
+            />
+            {/* @ts-ignore */}
+          </mesh>
+          {/* @ts-ignore */}
+          <mesh rotation={[Math.PI / 2, 0, 0]}>
+            {/* @ts-ignore */}
+            <ringGeometry args={[size * 1.6, size * 1.9, 64]} />
+            {/* @ts-ignore */}
+            <meshStandardMaterial
+              color="#B8860B"
+              transparent
+              opacity={0.5}
+              side={2}
+              metalness={0.1}
+              roughness={0.8}
+            />
+            {/* @ts-ignore */}
+          </mesh>
+        </>
+      )}
+      {/* @ts-ignore */}
+    </group>
+  );
+}

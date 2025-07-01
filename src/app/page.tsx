@@ -1,11 +1,5 @@
-import Container from "@/app/_components/container";
-import { HeroPost } from "@/app/_components/hero-post";
-import { Intro } from "@/app/_components/intro";
-import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
-import Hero from "./_components/hero-section";
-import AboutSection from "./_components/about-section";
-import ProjectsSection from "./_components/projects-section";
+import SolarSystem from "./planets/SolarySystem";
 
 export default function Index() {
   const allPosts = getAllPosts();
@@ -15,24 +9,28 @@ export default function Index() {
   const morePosts = allPosts.slice(1);
 
   return (
-    <main>
-      <div className="background-blur"></div>
-      <Hero />
-      <AboutSection />
-      <ProjectsSection />
-      
-      <Container>
-        {/* <Intro /> */}
-        {/* <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        /> */}
-        {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
-      </Container>
+    <main className="relative">
+      <SolarSystem />
     </main>
+
+    // <main>
+    //   <div className="background-blur"></div>
+    //   <Hero />
+    //   <AboutSection />
+    //   <ProjectsSection />
+
+    //   <Container>
+    //     {/* <Intro /> */}
+    //     {/* <HeroPost
+    //       title={heroPost.title}
+    //       coverImage={heroPost.coverImage}
+    //       date={heroPost.date}
+    //       author={heroPost.author}
+    //       slug={heroPost.slug}
+    //       excerpt={heroPost.excerpt}
+    //     /> */}
+    //     {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
+    //   </Container>
+    // </main>
   );
 }

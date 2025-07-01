@@ -5,6 +5,8 @@ import cn from "classnames";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import ModalRenderer from "@/components/ModalRenderer";
+import { ModalProvider } from "@/contexts/ModalContext";
 import Header from "./_components/header";
 import "./globals.css";
 
@@ -72,12 +74,15 @@ export default function RootLayout({
           //  "dark:bg-slate-900 dark:text-slate-400"
         )}
       >
-        <Analytics />
-        <Header />
-        {/* <ThemeSwitcher /> */}
+        <ModalProvider>
+          <Analytics />
+          <Header />
+          {/* <ThemeSwitcher /> */}
 
-        <div className="min-h-screen">{children}</div>
-        <Footer />
+          <div>{children}</div>
+          <Footer />
+          <ModalRenderer />
+        </ModalProvider>
       </body>
     </html>
   );

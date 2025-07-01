@@ -109,7 +109,7 @@
 .about-section-content {
   border: 1px solid var(--purple);
   background-color: var(--light-purple);
-  border-radius: 65px;
+  border-radius: 30px;
   padding: 35px;
   /* max-width: 1160px; */
 }
@@ -130,3 +130,19 @@ display: flex;
   gap: 1rem;
 
 */
+
+
+
+.tutorial-alert {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 6.5rem;
+}
+
+@media (min-width: 770px) {
+.tutorial-alert {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 4.5rem;
+}
+}
