@@ -1,17 +1,17 @@
-import ProjectCard from './project-card';
+import * as motion from "motion/react-client";
 import Container from './container';
-import * as motion from "motion/react-client"
+import ProjectCard from './project-card';
 
 const projects = [
   {
     title: 'Project Lynx',
     description:
-      'A real-time satellite tracking application built with Celetrak TLE (two-line element) data, and a 3d globe using Cesium.',
+      'A satellite visualizer application built with Celetrak TLE (two-line element) data, and a 3d globe using Cesium.',
     imageUrl:
-      '/assets/blog/lynx-screen.png',
-    tools: ['React', 'Next.js', 'Vite'],
-    codeUrl: 'https://github.com/NickMagidson/project-lynx',
-    siteUrl: 'https://project-lynx.netlify.app/',
+      '/assets/blog/lynx-screen2.png',
+    tools: ['React', 'Next.js', 'TypeScript'],
+    codeUrl: 'https://github.com/NickMagidson/project-lynx2',
+    siteUrl: 'https://project-lynx2.vercel.app/',
   },
   {
     title: 'Aero',
@@ -46,7 +46,7 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section className="mt-24 max-w-5xl mx-auto 2xl:max-w-6xl mb-12">
+    <section id="projects" className="mt-24 max-w-5xl mx-auto 2xl:max-w-6xl mb-12">
       <Container>
         <div className="flex flex-wrap justify-center gap-6 lg:justify-start">
         <motion.h1

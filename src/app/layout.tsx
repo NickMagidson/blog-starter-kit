@@ -5,7 +5,7 @@ import cn from "classnames";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import ModalRenderer from "@/components/ModalRenderer";
+// import ModalRenderer from "@/components/ModalRenderer";
 import { ModalProvider } from "@/contexts/ModalContext";
 import Header from "./_components/header";
 import "./globals.css";
@@ -81,7 +81,7 @@ export default function RootLayout({
 
           <div>{children}</div>
           <Footer />
-          <ModalRenderer />
+          {/* <ModalRenderer /> */}
         </ModalProvider>
       </body>
     </html>

@@ -1,16 +1,39 @@
 "use client"; // if using Next.js App Router
 
-import { useModal } from "@/contexts/ModalContext";
+// import { useModal } from "@/contexts/ModalContext";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const { openModal } = useModal();
+  // const { openModal } = useModal();
 
-  const handleModalOpen = (modalName: string) => {
-    openModal(modalName as any);
-    setOpen(false); // Close mobile menu when opening modal
+  const scrollToSection = (sectionId: string) => {
+    // First try to find the element
+    let element = document.getElementById(sectionId);
+    
+    // If not found, try with a slight delay (for dynamic content)
+    if (!element) {
+      setTimeout(() => {
+        element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        } else {
+          console.warn(`Element with ID "${sectionId}" not found`);
+        }
+      }, 100);
+    } else {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    
+    setOpen(false); // Close mobile menu when navigating
   };
 
   return (
@@ -73,42 +96,48 @@ export default function Header() {
               open ? "block mt-4" : "hidden lg:block"
             }`}
           >
+            <Link
+              href="/"
+              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+            >
+              Home
+            </Link>
             <button
-              onClick={() => handleModalOpen("About")}
+              onClick={() => scrollToSection("about")}
               className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               About
             </button>
             <button
-              onClick={() => handleModalOpen("Projects")}
+              onClick={() => scrollToSection("projects")}
               className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               Projects
             </button>
-            <button
-              onClick={() => handleModalOpen("Experience")}
+            {/* <button
+              onClick={() => scrollToSection("experience")}
               className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               Experience
-            </button>
-            <button
-              onClick={() => handleModalOpen("Contact")}
+            </button> */}
+            {/* <button
+              onClick={() => scrollToSection("contact")}
               className="block text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               Contact
-            </button>
-            <button
-              onClick={() => handleModalOpen("Open Source")}
+            </button> */}
+            {/* <button
+              onClick={() => scrollToSection("open-source")}
               className="block text-gray-300 hover:text-orange-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               Open Source
-            </button>
-            {/* <Link
-              href="/"
+            </button> */}
+            <Link
+              href="/blog"
               className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
             >
               Blog
-            </Link> */}
+            </Link>
           </div>
         </nav>
       </div>

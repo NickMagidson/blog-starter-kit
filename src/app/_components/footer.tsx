@@ -2,11 +2,12 @@ export function Footer() {
   return (
     <footer
       style={{ zIndex: "300000000" }}
-      className="fixed bottom-0 w-full bg-black"
+      className="w-full bg-black"
+      // className="fixed bottom-0 w-full bg-black"
     >
       <div className="py-5 flex flex-col items-center gap-3 md:flex-row md:justify-around md:items-center">
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} Nick Magidson | Fullstack Engineer.
+          © {new Date().getFullYear()} Nick Magidson
         </p>
         <div className="flex space-x-4">
           <a

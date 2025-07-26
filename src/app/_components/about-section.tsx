@@ -3,7 +3,7 @@ import Container from "./container";
 
 export default function AboutSection() {
   return (
-    <section className="max-w-5xl mx-auto 2xl:max-w-6xl z-50">
+    <section id="about" className="max-w-5xl mx-auto 2xl:max-w-6xl z-50">
       <Container>
         <motion.div
           className="about-section-content p-9 lg:p-14 2xl:p-16"
