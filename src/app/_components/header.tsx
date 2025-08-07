@@ -3,10 +3,16 @@
 // import { useModal } from "@/contexts/ModalContext";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  
+  // Check if we're on a blog page (blog listing or individual post)
+  const isBlogPage = pathname?.startsWith("/blog") || pathname?.startsWith("/posts");
+  
   // const { openModal } = useModal();
 
   const scrollToSection = (sectionId: string) => {
@@ -102,18 +108,22 @@ export default function Header() {
             >
               Home
             </Link>
-            <button
-              onClick={() => scrollToSection("about")}
-              className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
-            >
-              Projects
-            </button>
+            {!isBlogPage && (
+              <button
+                onClick={() => scrollToSection("about")}
+                className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
+              >
+                About
+              </button>
+            )}
+            {!isBlogPage && (
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
+              >
+                Projects
+              </button>
+            )}
             {/* <button
               onClick={() => scrollToSection("experience")}
               className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"

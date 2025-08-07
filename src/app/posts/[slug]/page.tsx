@@ -19,6 +19,7 @@ export default async function Post(props: Params) {
 
   return (
     <main>
+      <div className="background-blur"></div>
       {/* <Alert preview={post.preview} /> */}
       <Container>
         {/* <Header /> */}

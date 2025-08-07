@@ -11,7 +11,7 @@ export default function BlogPage() {
   // const otherPosts = allPosts.slice(1);
 
 
-    const allPosts = getAllPosts();
+  const allPosts = getAllPosts();
 
   const heroPost = allPosts[0];
 
@@ -82,7 +82,7 @@ export default function BlogPage() {
         )} */}
       </Container>
 
-            <Container>
+      <Container>
         {/* <Intro /> */}
         {/* <HeroPost
           title={heroPost.title}

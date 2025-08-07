@@ -3,7 +3,7 @@ import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import { Analytics } from "@vercel/analytics/next";
 import cn from "classnames";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
 // import ModalRenderer from "@/components/ModalRenderer";
 import { ModalProvider } from "@/contexts/ModalContext";
@@ -11,6 +11,10 @@ import Header from "./_components/header";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const jetbrainsMono = JetBrains_Mono({ 
+  subsets: ["latin"],
+  variable: '--font-jetbrains-mono',
+});
 
 export const metadata: Metadata = {
   title: `Nick Magidson | Frontend Engineer`,
@@ -70,6 +74,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
+          jetbrainsMono.variable,
           "bg-[#0b0b0e] text-slate-50"
           //  "dark:bg-slate-900 dark:text-slate-400"
         )}

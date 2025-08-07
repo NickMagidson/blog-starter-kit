@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/api";
 import AboutSection from "./_components/about-section";
+import ContactForm from "./_components/contact-form";
 import Container from "./_components/container";
 import Hero from "./_components/hero-section";
 import { MoreStories } from "./_components/more-stories";
@@ -25,15 +26,20 @@ export default function Index() {
       {/* <ExperienceSection /> */}
       {/* <OpenSourceContributions /> */}
       
-      {/* Contact Section */}
-      {/* <section id="contact" className="max-w-5xl mx-auto 2xl:max-w-6xl mb-12">
-        <Container>
-          <h2 className="heading-gradient text-5xl font-semibold sm:text-7xl lg:text-8xl mb-8">
-            Contact
+      {/* Minimal CTA Section */}
+      <section id="contact" className="max-w-4xl mx-auto 2xl:max-w-5xl mb-16 px-6">
+        <div className="text-center mb-12">
+          <h2 className="heading-gradient text-4xl font-semibold sm:text-6xl lg:text-7xl mb-4">
+            Let's Work Together
           </h2>
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Have a project in mind? I'd love to hear about it and help bring your ideas to life.
+          </p>
+        </div>
+        <div className="max-w-2xl mx-auto">
           <ContactForm />
-        </Container>
-      </section> */}
+        </div>
+      </section>
 
       <Container>
         {/* <Intro /> */}

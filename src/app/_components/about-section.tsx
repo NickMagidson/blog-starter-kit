@@ -16,17 +16,18 @@ export default function AboutSection() {
             <p>Hey there! I'm Nick.</p>
             <br />
             <p>
-              A Front-End engineer who’s a little obsessed with creating things.
+              A fullstack engineer who’s a little obsessed with creating things.
             </p>
             <br />
             <p>
-              My work experience involves React and Next.js, DevOps tools such
-              as Microsoft Azure, and UI/UX design using Figma.
+              I specialize in front-end development with tools like React and Next.js, 
+              but I also dive into back-end, DevOps, and AI integrations when the project calls for it. 
+              Alongside building user interfaces, I enjoy visualizing data, especially geospatial and space-related data.
             </p>
             <br />
             <p>
-              When I’m not writing code, you’ll probably find me writing music
-              and exploring new coffee shops.
+              When I’m not writing code, you’ll probably find me writing music, 
+              exploring new coffee shops, and collecting way too many plants.
             </p>
           </h3>
         </motion.div>

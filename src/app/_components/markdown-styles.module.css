@@ -16,3 +16,66 @@
 .markdown h3 {
   @apply text-2xl mt-8 mb-4 leading-snug;
 }
+
+/* List styling */
+.markdown ul {
+  @apply list-disc pl-6;
+}
+
+.markdown ol {
+  @apply list-decimal pl-6;
+}
+
+.markdown li {
+  @apply mb-2;
+}
+
+.markdown ul ul,
+.markdown ol ol,
+.markdown ul ol,
+.markdown ol ul {
+  @apply mt-2 mb-2;
+}
+
+/* Inline code styling */
+.markdown code {
+  @apply bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+}
+
+/* Code block styling - override inline code styles for code blocks */
+.markdown pre {
+  @apply rounded-lg p-4 overflow-x-auto my-6 border border-gray-700;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: #0d1117 !important; /* GitHub dark theme background */
+}
+
+.markdown pre code {
+  @apply bg-transparent p-0 text-sm;
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+  line-height: 1.5;
+  color: inherit !important; /* Let highlight.js handle the coloring */
+}
+
+/* Language label styling (optional enhancement) */
+.markdown pre[class*="language-"]::before {
+  content: attr(class);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  border-bottom-left-radius: 4px;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .markdown code {
+    @apply bg-gray-800 text-gray-200;
+  }
+  
+  .markdown pre {
+    @apply bg-gray-950 border-gray-600;
+  }
+}
