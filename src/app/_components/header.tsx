@@ -47,7 +47,7 @@ export default function Header() {
       style={{ zIndex: "300000000" }}
       className="navbar-main fixed w-full text-white z-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <nav className="flex items-center justify-between flex-wrap py-4">
           {/* Logo and Name */}
             <Link href="/" className="flex items-center space-x-3">
@@ -148,6 +148,14 @@ export default function Header() {
             >
               Blog
             </Link>
+            
+            {/* CTA Button */}
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="secondary-button mt-2 lg:mt-0 lg:ml-4"
+            >
+              Get In Touch
+            </button>
           </div>
         </nav>
       </div>
