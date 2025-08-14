@@ -150,12 +150,12 @@ export default function Header() {
             </Link>
             
             {/* CTA Button */}
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="secondary-button mt-2 lg:mt-0 lg:ml-4"
+            <a
+              href="mailto:nickmagidson@gmail.com"
+              className="secondary-button mt-2 lg:mt-0 lg:ml-4 inline-block text-center"
             >
               Get In Touch
-            </button>
+            </a>
           </div>
         </nav>
       </div>

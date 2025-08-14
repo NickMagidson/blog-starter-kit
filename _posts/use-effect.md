@@ -2,7 +2,7 @@
 title: "React useEffect Hook for Beginners"
 excerpt: "Learn everything about the useEffect hook in React - from basic usage to dependency arrays and cleanup functions. Understand how to handle side effects in functional components effectively."
 coverImage: "/assets/blog/use-effect/cover.jpg"
-date: "2024-12-15T10:30:00.000Z"
+date: "2025-08-08T10:30:00.000Z"
 author:
   name: Nick Magidson
   picture: "/assets/blog/authors/nick.jpg"
@@ -13,7 +13,7 @@ ogImage:
 
 
 
-# Introduction
+## Introduction
 
 Today we are going to talk about a the `useEffect` hook. One of the most fundamental hooks in React.
 
@@ -41,7 +41,7 @@ useEffect(() => {
   console.log("Component mounted!");
 }, []);
 ```
-You probably noticed that empty array at the end. We'll get to that later
+You probably noticed that empty array at the end. We'll get to that later...
 
 
 
@@ -124,7 +124,6 @@ useEffect(() => {
     clearInterval(timer); // ✅ Cleanup!
   };
 }, []);
-
 ```
 
 Without cleanup, you'd be creating a new interval on every re-render. This will stack up performance issues!
