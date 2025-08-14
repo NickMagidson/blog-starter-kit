@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="description" content="Nick Magidson | Frontend Engineer" />
+        <meta name="description" content="Nick Magidson | Fullstack Engineer" />
         <link rel="icon" href="/assets/blog/moon.png" type="image/png" />
         <link
           rel="apple-touch-icon"
