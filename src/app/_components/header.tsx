@@ -70,6 +70,7 @@ export default function Header() {
           <div className="block lg:hidden">
             <button
               onClick={() => setOpen(!open)}
+              onBlur={() => setOpen(false)}
               className="text-gray-700 w-10 h-10 relative focus:outline-none bg-slate-300 rounded"
             >
               <span className="sr-only">Open main menu</span>
@@ -104,6 +105,7 @@ export default function Header() {
           >
             <Link
               href="/"
+              onClick={() => setOpen(false)}
               className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
             >
               Home
@@ -144,6 +146,7 @@ export default function Header() {
             </button> */}
             <Link
               href="/blog"
+              onClick={() => setOpen(false)}
               className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
             >
               Blog

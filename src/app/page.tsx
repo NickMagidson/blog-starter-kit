@@ -32,12 +32,12 @@ export default function Index() {
             Let's Work Together
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it and help bring your ideas to life.
+            Have a project in mind? I'd love to hear about it.
           </p>
         </div>
         <div className="max-w-2xl mx-auto text-center">
           <a 
-            href="mailto:your@email.com" 
+            href="mailto:nickmagidson@gmail.com" 
             className="primary-button inline-block"
           >
             Get In Touch

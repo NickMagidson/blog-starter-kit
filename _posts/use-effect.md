@@ -2,7 +2,7 @@
 title: "React useEffect Hook for Beginners"
 excerpt: "Learn everything about the useEffect hook in React - from basic usage to dependency arrays and cleanup functions. Understand how to handle side effects in functional components effectively."
 coverImage: "/assets/blog/use-effect/cover.jpg"
-date: "2025-08-08T10:30:00.000Z"
+date: "2025-08-14T10:30:00.000Z"
 author:
   name: Nick Magidson
   picture: "/assets/blog/authors/nick.jpg"
