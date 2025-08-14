@@ -70,6 +70,16 @@ export default function RootLayout({
           data-domain="nickmagidson.com"
           src="https://plausible.io/js/script.js"
         ></script>
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E00S0MF0"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-21E00S0MF0');
+          `}
+        </script>
       </head>
       <body
         className={cn(
