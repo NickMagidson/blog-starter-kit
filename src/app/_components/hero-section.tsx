@@ -1,6 +1,5 @@
+import * as motion from "motion/react-client";
 import React from 'react';
-import * as motion from "motion/react-client"
-import Container from "@/app/_components/container";
 
 const Hero: React.FC = () => {
   return (
@@ -22,7 +21,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
         >
-          Frontend Engineer
+          Fullstack Engineer
         </motion.p>
         </section>
       {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}

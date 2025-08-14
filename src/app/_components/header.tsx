@@ -1,16 +1,45 @@
 "use client"; // if using Next.js App Router
 
-import { useModal } from "@/contexts/ModalContext";
+// import { useModal } from "@/contexts/ModalContext";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const { openModal } = useModal();
+  const pathname = usePathname();
+  
+  // Check if we're on a blog page (blog listing or individual post)
+  const isBlogPage = pathname?.startsWith("/blog") || pathname?.startsWith("/posts");
+  
+  // const { openModal } = useModal();
 
-  const handleModalOpen = (modalName: string) => {
-    openModal(modalName as any);
-    setOpen(false); // Close mobile menu when opening modal
+  const scrollToSection = (sectionId: string) => {
+    // First try to find the element
+    let element = document.getElementById(sectionId);
+    
+    // If not found, try with a slight delay (for dynamic content)
+    if (!element) {
+      setTimeout(() => {
+        element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        } else {
+          console.warn(`Element with ID "${sectionId}" not found`);
+        }
+      }, 100);
+    } else {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    
+    setOpen(false); // Close mobile menu when navigating
   };
 
   return (
@@ -18,10 +47,10 @@ export default function Header() {
       style={{ zIndex: "300000000" }}
       className="navbar-main fixed w-full text-white z-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <nav className="flex items-center justify-between flex-wrap py-4">
           {/* Logo and Name */}
-          <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
             <Image
               src="/assets/blog/moon.png"
               alt="Logo"
@@ -32,7 +61,7 @@ export default function Header() {
             <span className="heading-gradient font-semibold text-xl tracking-tight">
               Nick Magidson
             </span>
-          </div>
+            </Link>
           {/* <div className="flex items-center flex-shrink-0 text-black mr-6">
             <span className="font-semibold text-xl tracking-tight">MySite</span>
           </div> */}
@@ -41,6 +70,7 @@ export default function Header() {
           <div className="block lg:hidden">
             <button
               onClick={() => setOpen(!open)}
+              onBlur={() => setOpen(false)}
               className="text-gray-700 w-10 h-10 relative focus:outline-none bg-slate-300 rounded"
             >
               <span className="sr-only">Open main menu</span>
@@ -73,42 +103,62 @@ export default function Header() {
               open ? "block mt-4" : "hidden lg:block"
             }`}
           >
-            <button
-              onClick={() => handleModalOpen("About")}
-              className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
             >
-              About
-            </button>
-            <button
-              onClick={() => handleModalOpen("Projects")}
-              className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => handleModalOpen("Experience")}
+              Home
+            </Link>
+            {!isBlogPage && (
+              <button
+                onClick={() => scrollToSection("about")}
+                className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
+              >
+                About
+              </button>
+            )}
+            {!isBlogPage && (
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
+              >
+                Projects
+              </button>
+            )}
+            {/* <button
+              onClick={() => scrollToSection("experience")}
               className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               Experience
-            </button>
-            <button
-              onClick={() => handleModalOpen("Contact")}
+            </button> */}
+            {/* <button
+              onClick={() => scrollToSection("contact")}
               className="block text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               Contact
-            </button>
-            <button
-              onClick={() => handleModalOpen("Open Source")}
+            </button> */}
+            {/* <button
+              onClick={() => scrollToSection("open-source")}
               className="block text-gray-300 hover:text-orange-400 transition-colors duration-300 font-medium cursor-pointer"
             >
               Open Source
-            </button>
-            {/* <Link
-              href="/"
+            </button> */}
+            <Link
+              href="/blog"
+              onClick={() => setOpen(false)}
               className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
             >
               Blog
-            </Link> */}
+            </Link>
+            
+            {/* CTA Button */}
+            <a
+              href="mailto:nickmagidson@gmail.com"
+              className="secondary-button mt-2 lg:mt-0 lg:ml-4 inline-block text-center"
+            >
+              Get In Touch
+            </a>
           </div>
         </nav>
       </div>

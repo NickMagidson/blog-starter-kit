@@ -127,7 +127,7 @@ const experienceData: ExperienceItem[] = [
 
 export default function ExperienceSection() {
   return (
-    <div className="space-y-8">
+    <section id="experience" className="space-y-8">
       {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -223,6 +223,6 @@ export default function ExperienceSection() {
           Looking for new opportunities to create innovative solutions
         </p>
       </motion.div> */}
-    </div>
+    </section>
   );
 }

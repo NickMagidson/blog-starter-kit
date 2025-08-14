@@ -154,7 +154,7 @@ const languageColors = {
 
 export default function OpenSourceContributions() {
   return (
-    <div className="max-w-6xl mx-auto">
+    <section id="open-source" className="max-w-6xl mx-auto">
       {/* Header */}
       <motion.div
         className="text-center mb-8"
@@ -382,6 +382,6 @@ export default function OpenSourceContributions() {
           </div>
         </div>
       </motion.div> */}
-    </div>
+    </section>
   );
 }
