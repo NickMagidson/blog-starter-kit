@@ -24,7 +24,7 @@ A more efficient approach is to run requests in **parallel** using `Promise.all(
 
 `Promise.all()` is a method that accepts an iterable (usually an array) of promises and returns a single promise that resolves when all the input promises have resolved.
 
-If any promise rejects, `Promise.all()` **immediately rejects** with the reason from the first promise that failed. This makes it powerful for parallelizing independent asynchronous operations—but also something to handle carefully.
+If any promise rejects, `Promise.all()` **immediately rejects** with the reason from the first promise that failed. This makes it powerful for parallelizing independent asynchronous operations, but also something to handle carefully.
 
 
 
@@ -60,7 +60,7 @@ In this example, `fetchAll()` initiates all three fetch requests concurrently. W
 
 This approach can significantly reduce the total time spent waiting for all requests to complete compared to handling them sequentially.
 
-**Important**: This approach works best when your requests are independent of each other—meaning one request doesn't need the result of another to proceed. If your requests have dependencies (like needing a user ID from the first request to fetch that user's posts), you'll need to handle them sequentially or in stages.
+**Important**: This approach works best when your requests are independent of each other, meaning one request doesn't need the result of another to proceed. If your requests have dependencies (like needing a user ID from the first request to fetch that user's posts), you'll need to handle them sequentially or in stages.
 
 
 
