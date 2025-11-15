@@ -1,0 +1,36 @@
+import { getAllPosts } from "@/lib/api";
+import AboutSection from "../_components/about-section";
+import Hero from "../_components/hero-section";
+import ProjectsSection from "../_components/projects-section";
+
+export default function Index() {
+  const allPosts = getAllPosts();
+
+  const heroPost = allPosts[0];
+
+  const morePosts = allPosts.slice(1);
+
+  return (
+    <main>
+      <div className="background-blur"></div>
+      <Hero />
+      <AboutSection />
+      <ProjectsSection />
+      {/* <ExperienceSection /> */}
+      {/* <OpenSourceContributions />  */}
+
+      {/* <Container> */}
+      {/* <Intro /> */}
+      {/* <HeroPost
+          title={heroPost.title}
+          coverImage={heroPost.coverImage}
+          date={heroPost.date}
+          author={heroPost.author}
+          slug={heroPost.slug}
+          excerpt={heroPost.excerpt}
+        /> */}
+      {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
+      {/* </Container> */}
+    </main>
+  );
+}

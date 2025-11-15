@@ -183,7 +183,12 @@ export default function SolarSystem() {
   const [loadProgress, setLoadProgress] = useState(0);
 
   const handleSelect = (planetName: string) => {
-    openModal(planetName as any);
+    if (planetName === "Open Source") {
+      // Open external blog in new tab
+      window.open('https://your-blog-url.com', '_blank', 'noopener,noreferrer');
+    } else {
+      openModal(planetName as any);
+    }
   };
 
   // Enhanced loading progress with more realistic timing
@@ -226,7 +231,7 @@ export default function SolarSystem() {
 
   return (
     <motion.div
-      className="relative w-full h-screen"
+      className="relative w-full h-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
@@ -297,7 +302,7 @@ export default function SolarSystem() {
         />
 
         <Planet
-          name="Open Source"
+          name="Blog"
           orbitRadius={20}
           orbitSpeed={0.003}
           size={1.1}

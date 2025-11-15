@@ -2,26 +2,83 @@
 
 import { useModal } from "@/contexts/ModalContext";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+  
+  // Check if we're on a blog page (blog listing or individual post)
+  const isBlogPage = pathname?.startsWith("/blog") || pathname?.startsWith("/posts");
+  
   const { openModal } = useModal();
 
-  const handleModalOpen = (modalName: string) => {
-    openModal(modalName as any);
-    setOpen(false); // Close mobile menu when opening modal
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open]);
+
+  const handleModalOpen = (modalType: "About" | "Projects" | "Experience" | "Contact") => {
+    // Close mobile menu first, then open modal
+    setOpen(false);
+    // Small delay to ensure menu closes before modal opens
+    setTimeout(() => {
+      openModal(modalType);
+    }, 100);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    // First try to find the element
+    let element = document.getElementById(sectionId);
+    
+    // If not found, try with a slight delay (for dynamic content)
+    if (!element) {
+      setTimeout(() => {
+        element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        } else {
+          console.warn(`Element with ID "${sectionId}" not found`);
+        }
+      }, 100);
+    } else {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    
+    setOpen(false); // Close mobile menu when navigating
   };
 
   return (
     <div
       style={{ zIndex: "300000000" }}
       className="navbar-main fixed w-full text-white z-50"
+      ref={menuRef}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <nav className="flex items-center justify-between flex-wrap py-4">
           {/* Logo and Name */}
-          <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
             <Image
               src="/assets/blog/moon.png"
               alt="Logo"
@@ -32,7 +89,7 @@ export default function Header() {
             <span className="heading-gradient font-semibold text-xl tracking-tight">
               Nick Magidson
             </span>
-          </div>
+            </Link>
           {/* <div className="flex items-center flex-shrink-0 text-black mr-6">
             <span className="font-semibold text-xl tracking-tight">MySite</span>
           </div> */}
@@ -73,42 +130,59 @@ export default function Header() {
               open ? "block mt-4" : "hidden lg:block"
             }`}
           >
-            <button
-              onClick={() => handleModalOpen("About")}
-              className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
+            {/* <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium py-2"
             >
-              About
-            </button>
-            <button
-              onClick={() => handleModalOpen("Projects")}
-              className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
-            >
-              Projects
-            </button>
+              Home
+            </Link> */}
+            {!isBlogPage && (
+              <button
+                onClick={() => handleModalOpen("About")}
+                className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
+              >
+                About
+              </button>
+            )}
+            {!isBlogPage && (
+              <button
+                onClick={() => handleModalOpen("Projects")}
+                className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
+              >
+                Projects
+              </button>
+            )}
             <button
               onClick={() => handleModalOpen("Experience")}
-              className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
+              className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
             >
               Experience
             </button>
+
+            <Link
+              href="/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium w-full text-left py-2"
+            >
+              Blog
+            </Link>
             <button
               onClick={() => handleModalOpen("Contact")}
-              className="block text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium cursor-pointer"
+              className="block text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
             >
               Contact
             </button>
-            <button
-              onClick={() => handleModalOpen("Open Source")}
-              className="block text-gray-300 hover:text-orange-400 transition-colors duration-300 font-medium cursor-pointer"
+            
+            {/* CTA Button */}
+            {/* <button
+              onClick={() => handleModalOpen("Contact")}
+              className="secondary-button mt-2 lg:mt-0 lg:ml-4 cursor-pointer block lg:inline-block text-center w-auto"
             >
-              Open Source
-            </button>
-            {/* <Link
-              href="/"
-              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
-            >
-              Blog
-            </Link> */}
+              Get In Touch
+            </button> */}
           </div>
         </nav>
       </div>

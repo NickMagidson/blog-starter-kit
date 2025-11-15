@@ -5,10 +5,10 @@ const projects = [
     title: "Project Lynx",
     description:
       "A real-time satellite tracking application built with Celetrak TLE (two-line element) data, and a 3d globe using Cesium.",
-    imageUrl: "/assets/blog/lynx-screen.png",
-    tools: ["React", "Next.js", "Vite"],
-    codeUrl: "https://github.com/NickMagidson/project-lynx",
-    siteUrl: "https://project-lynx.netlify.app/",
+    imageUrl: "/assets/blog/lynx-screen2.png",
+    tools: ["React", "Next.js", "TypeScript", "Cesium"],
+    codeUrl: 'https://github.com/NickMagidson/project-lynx2',
+    siteUrl: 'https://project-lynx2.vercel.app/',
   },
   {
     title: "Aero",
