@@ -5,7 +5,7 @@ import cn from "classnames";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
-// import ModalRenderer from "@/components/ModalRenderer";
+import ModalRenderer from "@/components/ModalRenderer";
 import { ModalProvider } from "@/contexts/ModalContext";
 import Header from "./_components/header";
 import "./globals.css";
@@ -85,18 +85,23 @@ export default function RootLayout({
         className={cn(
           inter.className,
           jetbrainsMono.variable,
-          "bg-[#0b0b0e] text-slate-50"
+          "bg-[#0b0b0e] text-slate-50 h-screen overflow-hidden"
           //  "dark:bg-slate-900 dark:text-slate-400"
         )}
       >
         <ModalProvider>
           <Analytics />
-          <Header />
-          {/* <ThemeSwitcher /> */}
-
-          <div>{children}</div>
-          <Footer />
-          {/* <ModalRenderer /> */}
+          <div className="h-full flex flex-col">
+            <Header />
+            {/* <ThemeSwitcher /> */}
+            
+            <main className="flex-1 overflow-hidden">
+              {children}
+            </main>
+            
+            <Footer />
+          </div>
+          <ModalRenderer />
         </ModalProvider>
       </body>
     </html>

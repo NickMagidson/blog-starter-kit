@@ -3,7 +3,6 @@
 import AboutSection2 from "@/app/_components/about-section2";
 import CloseButton from "@/app/_components/close-button";
 import ExperienceSection from "@/app/_components/experience-section";
-import OpenSourceContributions from "@/app/_components/open-source-contributions";
 import ProjectsSection2 from "@/app/_components/projects-section2";
 import Modal from "@/app/planets/Modal";
 import { useModal } from "@/contexts/ModalContext";
@@ -102,7 +101,7 @@ export default function ModalRenderer() {
             <CloseButton onClick={closeModal} />
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2">
+          <div className="flex-1 pr-2">
             <motion.div
               className="about-section-content flex flex-col gap-8"
               initial={{ opacity: 0, y: 30 }}
@@ -116,9 +115,9 @@ export default function ModalRenderer() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+                {/* <p className="text-xl text-gray-300 mb-6 leading-relaxed">
                   🚀 You can get in touch with me through the options below:
-                </p>
+                </p> */}
               </motion.div>
 
               {/* Primary Email Button */}
@@ -212,7 +211,7 @@ export default function ModalRenderer() {
               </motion.div>
 
               {/* Response Promise */}
-              <motion.div
+              {/* <motion.div
                 className="text-center mt-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -222,7 +221,7 @@ export default function ModalRenderer() {
                   💬 I typically respond within 24 hours. Looking forward to
                   hearing from you!
                 </p>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           </div>
         </div>
@@ -237,12 +236,43 @@ export default function ModalRenderer() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              Open Source
+              Blog
             </motion.h1>
             <CloseButton onClick={closeModal} />
           </div>
-          <div className="flex-1 overflow-y-auto pr-2">
-            <OpenSourceContributions />
+          <div className="flex-1 overflow-y-auto pr-2 flex flex-col items-center justify-center min-h-[400px]">
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+                  📝 Check out my blog for insights on web development, tech trends, and coding adventures!
+                </p>
+              </motion.div>
+
+              <motion.button
+                className="primary-button group relative overflow-hidden"
+                onClick={() => window.open('/blog', '_blank', 'noopener,noreferrer')}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  🚀 Visit My Blog
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.button>
+            </motion.div>
           </div>
         </div>
       )}

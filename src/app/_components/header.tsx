@@ -1,19 +1,46 @@
 "use client"; // if using Next.js App Router
 
-// import { useModal } from "@/contexts/ModalContext";
+import { useModal } from "@/contexts/ModalContext";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
   
   // Check if we're on a blog page (blog listing or individual post)
   const isBlogPage = pathname?.startsWith("/blog") || pathname?.startsWith("/posts");
   
-  // const { openModal } = useModal();
+  const { openModal } = useModal();
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open]);
+
+  const handleModalOpen = (modalType: "About" | "Projects" | "Experience" | "Contact") => {
+    // Close mobile menu first, then open modal
+    setOpen(false);
+    // Small delay to ensure menu closes before modal opens
+    setTimeout(() => {
+      openModal(modalType);
+    }, 100);
+  };
 
   const scrollToSection = (sectionId: string) => {
     // First try to find the element
@@ -46,6 +73,7 @@ export default function Header() {
     <div
       style={{ zIndex: "300000000" }}
       className="navbar-main fixed w-full text-white z-50"
+      ref={menuRef}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <nav className="flex items-center justify-between flex-wrap py-4">
@@ -70,7 +98,6 @@ export default function Header() {
           <div className="block lg:hidden">
             <button
               onClick={() => setOpen(!open)}
-              onBlur={() => setOpen(false)}
               className="text-gray-700 w-10 h-10 relative focus:outline-none bg-slate-300 rounded"
             >
               <span className="sr-only">Open main menu</span>
@@ -103,62 +130,59 @@ export default function Header() {
               open ? "block mt-4" : "hidden lg:block"
             }`}
           >
-            <Link
+            {/* <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium py-2"
             >
               Home
-            </Link>
+            </Link> */}
             {!isBlogPage && (
               <button
-                onClick={() => scrollToSection("about")}
-                className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
+                onClick={() => handleModalOpen("About")}
+                className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
               >
                 About
               </button>
             )}
             {!isBlogPage && (
               <button
-                onClick={() => scrollToSection("projects")}
-                className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
+                onClick={() => handleModalOpen("Projects")}
+                className="block text-gray-300 hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
               >
                 Projects
               </button>
             )}
-            {/* <button
-              onClick={() => scrollToSection("experience")}
-              className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer"
+            <button
+              onClick={() => handleModalOpen("Experience")}
+              className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
             >
               Experience
-            </button> */}
-            {/* <button
-              onClick={() => scrollToSection("contact")}
-              className="block text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium cursor-pointer"
-            >
-              Contact
-            </button> */}
-            {/* <button
-              onClick={() => scrollToSection("open-source")}
-              className="block text-gray-300 hover:text-orange-400 transition-colors duration-300 font-medium cursor-pointer"
-            >
-              Open Source
-            </button> */}
+            </button>
+
             <Link
               href="/blog"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+              className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium w-full text-left py-2"
             >
               Blog
             </Link>
+            <button
+              onClick={() => handleModalOpen("Contact")}
+              className="block text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium cursor-pointer w-full text-left py-2"
+            >
+              Contact
+            </button>
             
             {/* CTA Button */}
-            <a
-              href="mailto:nickmagidson@gmail.com"
-              className="secondary-button mt-2 lg:mt-0 lg:ml-4 inline-block text-center"
+            {/* <button
+              onClick={() => handleModalOpen("Contact")}
+              className="secondary-button mt-2 lg:mt-0 lg:ml-4 cursor-pointer block lg:inline-block text-center w-auto"
             >
               Get In Touch
-            </a>
+            </button> */}
           </div>
         </nav>
       </div>

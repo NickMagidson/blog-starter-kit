@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer
       style={{ zIndex: "300000000" }}
-      className="w-full bg-black"
+      className="w-full bg-black shrink-0"
       // className="fixed bottom-0 w-full bg-black"
     >
       <div className="py-5 flex flex-col items-center gap-3 md:flex-row md:justify-around md:items-center">
