@@ -145,7 +145,8 @@ export default function Header() {
               Open Source
             </button> */}
             <Link
-              href="/blog"
+              href="https://www.midnightbuild.dev/"
+              target="_blank"
               onClick={() => setOpen(false)}
               className="block text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
             >
